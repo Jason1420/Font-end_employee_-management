@@ -1,0 +1,33 @@
+.page-container {
+    display: flex;
+    flex: 1;
+
+    .page-sidebar {
+        position: fixed;
+        top: 50px;
+        left: 0;
+        width: 250px;
+        height: 100%;
+
+    }
+
+    // khi có sidebar
+    .page-content {
+        padding-top: 70px;
+        padding-right: 10px;
+        padding-left: 250px;
+        transition: all 0.7s ease-in;
+    }
+
+    //khi không sidebar
+    .page-content-2 {
+        padding-top: 60px;
+        padding-right: 10px;
+        padding-left: 20px;
+        padding-bottom: 10px;
+        transition: all 0.7s ease-in;
+    }
+
+
+
+}
