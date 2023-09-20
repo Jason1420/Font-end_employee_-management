@@ -55,8 +55,7 @@ const SidebarMenu: React.FC<Props> = (props) => {
                                 <li className={isShow[1] ? "sidebar-dropdown active" : "sidebar-dropdown"}>
                                     <a href="#"
                                         onClick={(event) => handleShowUL(event, 1)}>
-                                        <i className="fa fa-shopping-cart"
-                                        />
+                                        <i className="fab fa-creative-commons-nd"></i>
                                         <span>Apps</span>
                                     </a>
                                     <div className={isShow[1] ? "sidebar-submenu-active" : "sidebar-submenu"}>

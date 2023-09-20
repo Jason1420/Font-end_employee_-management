@@ -1,0 +1,155 @@
+@import '~bootstrap/scss/bootstrap';
+@import '../.././styles/fontawesome.scss';
+@import '../../index.scss';
+
+.dashboard-container-employee {
+    
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 50px;
+    font-family: 'CircularStd', sans-serif;
+    .dashboard-header{
+        display: flex;  
+        height: 100px;
+        flex-direction: row;
+        background-color: white;
+        align-items: center;
+        margin-top: -10px;
+        margin-left: -20px;
+        img{
+            margin: 0 20px;
+            height: 60px;
+            width: 60px;
+            border-radius: 8px;
+        }
+        .header-content{
+            margin-top: 20px;
+            h3{
+                font-size: 24px;
+                font-weight: 500;
+            }
+            p{
+                color: #777777;
+                font-size: 18px;
+            }
+            
+        }
+    }
+
+    .dashboard-content{
+        display: flex;
+
+        .dashboard-left{
+            max-width:70vw;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            .dash-selection{
+                display: flex;
+                flex-direction: column;
+                .title{
+                    h1{
+                        color: #1f1f1f;
+                        font-size: 18px;
+                        font-weight: 700;
+                        margin: 35px 0 15px 25px;
+                        text-transform: uppercase;
+                    }
+                }
+                .card{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 0 20px;
+                    margin: 0 25px 15px 30px;
+                    height: 70px;
+                    color: #575757;
+                    border-radius: 3px;
+                border: 1px solid #ededed;
+                box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+                .active{
+                    color :#f62d51;
+                }
+                .card-icon-content{
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                }
+                    .card-icon{
+                        font-size: 30px;
+                    }
+                    .card-content{
+                        font-size: 22px;
+                        font-weight: 500;
+                    }
+                    .card-avatar{
+                        img{
+                            width: 50px;
+                            height: 50px;
+                            border-radius: 50px;
+                            background-color: white;
+                            border: 2.4px solid #e2e5e8 ;
+                        }
+                    }
+                }
+            }
+        }
+        .dashboard-right{
+            width: 100%;
+            max-width: 30vw;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            margin: 0 0 0 0;
+            .title{
+                h5{
+                    color: #1f1f1f;
+                    font-size: 13px;
+                    font-weight: 700;
+                    margin: 15px 0 15px 0px;
+                    text-transform: uppercase;
+                }
+            }
+            .card{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                border-radius: 3px;
+                border: 1px solid #ededed;
+                box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+                .card-top{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap:90px;
+                    padding-top: 15px;
+                    
+                }
+                h4{
+                    text-align: center;
+                    font-size: 21px;
+                }
+                p{
+                    text-align: center;
+                    font-size: 13px;
+                    color: #575757;
+                }
+                .card-bottom{
+                    button{
+                        display: inline-block;
+                        color:white;
+                        background-color: #ff9b44;
+                        border-radius: 4px;
+                        border: 1px solid rgb(252, 99, 114);
+                        line-height:24px;
+                        padding:6px 12px;
+                        text-align: center;
+                        margin-bottom: 15px;
+                    }
+                }
+            }
+        }
+    }
+}
