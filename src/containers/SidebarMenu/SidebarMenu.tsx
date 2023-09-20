@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import './SidebarMenu.scss'
 import { Console } from 'console'
+import { NavLink } from 'react-router-dom'
+import { PathSidebar } from '../../routes/Path'
+
 interface Props {
     isShowSidebar: boolean
 }
@@ -38,11 +41,12 @@ const SidebarMenu: React.FC<Props> = (props) => {
                                     <div className={isShow[0] ? "sidebar-submenu-active" : "sidebar-submenu"}>
                                         <ul>
                                             <li>
-                                                <a href="#">Admin Dashboard
-                                                </a>
+                                                <NavLink to={PathSidebar.DASHBOARD}>
+                                                    Admin Dashboard
+                                                </NavLink>
                                             </li>
                                             <li>
-                                                <a href="#">Employee Dashboard</a>
+                                                <NavLink to={PathSidebar.EMPLOYEE_DASHBOARD}>Employee Dashboard</NavLink>
                                             </li>
 
                                         </ul>
@@ -58,14 +62,14 @@ const SidebarMenu: React.FC<Props> = (props) => {
                                     <div className={isShow[1] ? "sidebar-submenu-active" : "sidebar-submenu"}>
                                         <ul>
                                             <li>
-                                                <a href="#">Chat
-                                                </a>
+                                                <NavLink to={PathSidebar.CHAT}>Chat
+                                                </NavLink>
                                             </li>
                                             <li>
-                                                <a href="#">Calls</a>
+                                                <NavLink to={PathSidebar.CALLS}>Calls</NavLink>
                                             </li>
                                             <li>
-                                                <a href="#">File Manager</a>
+                                                <NavLink to={PathSidebar.FILE_MANAGER}>File Manager</NavLink>
                                             </li>
                                         </ul>
                                     </div>
@@ -82,28 +86,28 @@ const SidebarMenu: React.FC<Props> = (props) => {
                                     <div className={isShow[2] ? "sidebar-submenu-active" : "sidebar-submenu"}>
                                         <ul>
                                             <li>
-                                                <a href="#">All Employees</a>
+                                                <NavLink to={PathSidebar.ALL_EMPLOYEES}>All Employees</NavLink>
                                             </li>
                                             <li>
-                                                <a href="#">Attendance(Admin)</a>
+                                                <NavLink to={PathSidebar.ATTENDANCE_ADMIN}>Attendance(Admin)</NavLink>
                                             </li>
                                             <li>
-                                                <a href="#">Attendance(Employee)</a>
+                                                <NavLink to={PathSidebar.ATTENDANCE_EMPLOYEE}>Attendance(Employee)</NavLink>
                                             </li>
                                             <li>
-                                                <a href="#">Department</a>
+                                                <NavLink to={PathSidebar.DEPARTMENT}>Department</NavLink>
                                             </li>
                                             <li>
-                                                <a href="#">Designations</a>
+                                                <NavLink to={PathSidebar.DESIGNATIONS}>Designations</NavLink>
                                             </li>
                                             <li>
-                                                <a href="#">Timesheet</a>
+                                                <NavLink to={PathSidebar.TIME_SHEET}>Timesheet</NavLink>
                                             </li>
                                             <li>
-                                                <a href="#">Shift & Schedule</a>
+                                                <NavLink to={PathSidebar.SHIFT_SCHEDULE}>Shift & Schedule</NavLink>
                                             </li>
                                             <li>
-                                                <a href="#">Overtime</a>
+                                                <NavLink to={PathSidebar.OVERTIME}>Overtime</NavLink>
                                             </li>
                                         </ul>
                                     </div>
@@ -117,13 +121,13 @@ const SidebarMenu: React.FC<Props> = (props) => {
                                     <div className={isShow[3] ? "sidebar-submenu-active" : "sidebar-submenu"}>
                                         <ul>
                                             <li>
-                                                <a href="#">Project</a>
+                                                <NavLink to={PathSidebar.PROJECT}>Project</NavLink>
                                             </li>
                                             <li>
-                                                <a href="#">Tasks</a>
+                                                <NavLink to={PathSidebar.TASKS}>Tasks</NavLink>
                                             </li>
                                             <li>
-                                                <a href="#">Task Board</a>
+                                                <NavLink to={PathSidebar.TASK_BOARD}>Task Board</NavLink>
                                             </li>
                                         </ul>
                                     </div>
@@ -140,13 +144,13 @@ const SidebarMenu: React.FC<Props> = (props) => {
                                     <div className={isShow[4] ? "sidebar-submenu-active" : "sidebar-submenu"}>
                                         <ul>
                                             <li>
-                                                <a href="#">Employee Report</a>
+                                                <NavLink to={PathSidebar.EMPLOYEE_REPORT}>Employee Report</NavLink>
                                             </li>
                                             <li>
-                                                <a href="#">Attendance Report</a>
+                                                <NavLink to={PathSidebar.ATTENDANCE_REPORT}>Attendance Report</NavLink>
                                             </li>
                                             <li>
-                                                <a href="#">Leave Report</a>
+                                                <NavLink to={PathSidebar.LEAVE_REPORT}>Leave Report</NavLink>
                                             </li>
                                         </ul>
                                     </div>

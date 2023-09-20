@@ -2,6 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss';
 import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import Login from './containers/Auth/Login';
+import { Paths } from './routes/Path';
+import Register from './containers/Auth/Register';
+import ResetPassword from './containers/Auth/ResetPassword';
+
+
 // import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
@@ -9,7 +17,15 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<App />} />
+        <Route path={Paths.LOGIN} element={<Login />} />
+        <Route path={Paths.REGISTER} element={<Register />} />
+        <Route path={Paths.FORGOT_PASSWORD} element={<ResetPassword />} />
+        <Route path='/*' element={<App />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

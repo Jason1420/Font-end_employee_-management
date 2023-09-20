@@ -6,11 +6,12 @@ import flags_es from '../../assets/flags/es.png'
 import flags_de from '../../assets/flags/de.png'
 import flags_fr from '../../assets/flags/fr.png'
 import './Header.scss'
-import SidebarMenu from '../SidebarMenu/SidebarMenu'
+import { NavLink } from 'react-router-dom'
+
 
 interface Props {
     isShowSidebar: boolean,
-    handleShowSidebar: () => void
+    handleShowSidebar: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void
 }
 
 const Header: React.FC<Props> = ({ isShowSidebar, handleShowSidebar }) => {
@@ -18,11 +19,13 @@ const Header: React.FC<Props> = ({ isShowSidebar, handleShowSidebar }) => {
     const [isLanguageDrop, setLangDrop] = useState<boolean>(false)
     const [isUserDrop, setUserDrop] = useState<boolean>(false)
 
-    const handleLanguageDrop = () => {
+    const handleLanguageDrop = (event: React.MouseEvent<HTMLAnchorElement>) => {
+        event.preventDefault();
         setLangDrop(!isLanguageDrop)
         setUserDrop(false)
     }
-    const handleUser = () => {
+    const handleUser = (event: React.MouseEvent<HTMLAnchorElement>) => {
+        event.preventDefault();
         setUserDrop(!isUserDrop)
         setLangDrop(false)
     }
@@ -32,13 +35,13 @@ const Header: React.FC<Props> = ({ isShowSidebar, handleShowSidebar }) => {
             <div className='header row' >
                 <div className="col-6 row">
                     <div className={`header-left ${isShowSidebar ? "col-4" : "col-2"}`}>
-                        <a href="dashboard" className="logo">
+                        <NavLink to="/" className="logo">
                             <img src={Logo} alt="logo-header" width={isShowSidebar ? 40 : 30} height={isShowSidebar ? 40 : 30} />
-                        </a>
+                        </NavLink>
                     </div>
 
                     <div className='toggle-btn col-6'>
-                        <a href='#' onClick={() => handleShowSidebar()}><i className="fas fa-bars"></i></a>
+                        <a href='#' onClick={(event) => handleShowSidebar(event)}><i className="fas fa-bars"></i></a>
                         <div className='title'>Employee Management</div>
                     </div>
                     {/* <div className={`toggle-btn ${isShowSidebar ? 'col-1' : 'col-2'}`}>
@@ -53,7 +56,7 @@ const Header: React.FC<Props> = ({ isShowSidebar, handleShowSidebar }) => {
                     <div className="btn-group col-2">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="navbarDropdownMenuLink" role="button" aria-expanded="false" onClick={() => handleLanguageDrop()}>
+                                <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="navbarDropdownMenuLink" role="button" aria-expanded="false" onClick={(event) => handleLanguageDrop(event)}>
                                     <img src={flags_us} alt="" height="20" /> <span >English</span>
                                 </a>
                                 <div className={isLanguageDrop ? "dropdown-menu show" : "dropdown-menu"} aria-labelledby="navbarDropdownMenuLink" >
@@ -85,7 +88,7 @@ const Header: React.FC<Props> = ({ isShowSidebar, handleShowSidebar }) => {
                     <div className='btn-group col-2'>
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="navbarDropdownMenuLink" role="button" aria-expanded="false" onClick={() => handleUser()}>
+                                <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="navbarDropdownMenuLink" role="button" aria-expanded="false" onClick={(event) => handleUser(event)}>
                                     <span className="user-img"><img src={avatar} alt="" /><span className="status-online"></span></span>
                                     <span >Admin</span>
                                 </a>

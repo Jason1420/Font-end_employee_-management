@@ -83,12 +83,12 @@
      }
 
      .sidebar-hide {
-         animation: hide 0.7s forwards ease-in;
+         animation: hide 0.3s forwards ease-in;
 
      }
 
      .sidebar-show {
-         animation: show 0.7s forwards ease-in;
+         animation: show 0.3s forwards ease-in;
      }
 
      .page-wrapper .sidebar-wrapper,
@@ -355,6 +355,12 @@
      .sidebar-wrapper .sidebar-menu .sidebar-submenu-active {
          display: block;
 
+         .active {
+             color: #ff9b44 !important;
+             text-decoration: underline !important;
+             transition: 0.25s ease-in-out;
+         }
+
      }
 
      .sidebar-wrapper .sidebar-menu .sidebar-dropdown.active>a:after {
@@ -546,5 +552,10 @@
          border-right: none;
      }
 
+
+     .active {
+         color: #ff9b44;
+         text-decoration: underline;
+     }
 
  }
