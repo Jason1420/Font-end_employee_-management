@@ -1,0 +1,32 @@
+@import '~bootstrap/scss/bootstrap';
+@import '../.././styles/fontawesome.scss';
+@import '../../index.scss';
+
+.dashboard-profile-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'CircularStd', sans-serif;
+    padding-bottom: 40px;
+    .dashboard-header {
+        padding:30px 10px ;
+        display: flex;
+        flex-direction: column;
+
+        .bread-crumb {
+            display: flex;
+            color: #6c757d;
+            font-weight: 500;
+            text-align: left;
+            .breadcrumb-history{
+                cursor: pointer;
+                color:#212529;
+            }
+        }
+    }
+    .dashboard-content{
+        
+    }
+    
+}

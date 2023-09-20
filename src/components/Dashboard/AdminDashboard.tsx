@@ -123,9 +123,6 @@ const AdminDashboard = () => {
                     </div>
 
                 </div>
-                {/* <div className="child-content"></div>
-                <div className="child-content"></div>
-                <div className="child-content"></div> */}
             </div>
         </div>
     )

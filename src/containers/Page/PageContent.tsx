@@ -3,8 +3,9 @@ import SidebarMenu from '../SidebarMenu/SidebarMenu'
 import './PageContent.scss'
 import { Routes, Route } from 'react-router-dom';
 import AdminDashboard from '../../components/Dashboard/AdminDashboard';
-import { PathSidebar } from '../../routes/Path';
+import { PathHeader, PathSidebar } from '../../routes/Path';
 import EmployeeDashboard from '../../components/Dashboard/EmployeeDashboard';
+import MyProfile from '../../components/User/MyProfile';
 
 interface Props {
     isShowSidebar: boolean
@@ -21,6 +22,7 @@ const PageContent: React.FC<Props> = (props) => {
                 <Routes>
                     <Route path={PathSidebar.DASHBOARD} element={<AdminDashboard />} />
                     <Route path={PathSidebar.EMPLOYEE_DASHBOARD} element={<EmployeeDashboard />} />
+                    <Route path={PathHeader.PROFILE} element={<MyProfile />} />
                 </Routes>
             </div>
         </div>
