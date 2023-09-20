@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import Logo from '../../assets/images/logo/logo2.png'
 import './Login.scss'
+import { NavLink } from 'react-router-dom';
+import { PathAuth } from '../../routes/Path';
 
 const Login = () => {
     const [isShowPassword, setShowPassword] = useState<boolean>(false);
@@ -25,7 +27,7 @@ const Login = () => {
                     <div className="login-input ">
                         <div className="label-form">
                             <label>Password</label>
-                            <a className="forgot-password" href='#'>Forgot your password?</a>
+                            <NavLink className="forgot-password" to={PathAuth.FORGOT_PASSWORD}>Forgot your password?</NavLink>
                         </div>
                         <div className="password-input-form">
                             <input type={isShowPassword ? 'text' : 'password'} className='form-control' placeholder='Enter password' />
@@ -35,15 +37,16 @@ const Login = () => {
                         </div>
                     </div>
                     <div className="form-group text-center">
-                        <button className="btn-primary login-btn">Login</button>
+                        <NavLink to='/' style={{ textDecoration: 'none' }}>
+                            <button className="btn-primary login-btn">Login</button></NavLink>
                     </div>
                     <div className="account-footer text-center">
-                        <p>Don't have an account yet? <a href="auth-register">Register</a></p>
+                        <p>Don't have an account yet? <NavLink to={PathAuth.REGISTER}>Register</NavLink></p>
                     </div>
                 </div>
 
             </div>
-        </div>
+        </div >
     )
 }
 

@@ -5,7 +5,7 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import Login from './containers/Auth/Login';
-import { Paths } from './routes/Path';
+import { PathAuth } from './routes/Path';
 import Register from './containers/Auth/Register';
 import ResetPassword from './containers/Auth/ResetPassword';
 
@@ -20,9 +20,9 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<App />} />
-        <Route path={Paths.LOGIN} element={<Login />} />
-        <Route path={Paths.REGISTER} element={<Register />} />
-        <Route path={Paths.FORGOT_PASSWORD} element={<ResetPassword />} />
+        <Route path={PathAuth.LOG_IN} element={<Login />} />
+        <Route path={PathAuth.REGISTER} element={<Register />} />
+        <Route path={PathAuth.FORGOT_PASSWORD} element={<ResetPassword />} />
         <Route path='/*' element={<App />} />
       </Routes>
     </BrowserRouter>

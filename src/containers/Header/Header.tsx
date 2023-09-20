@@ -7,6 +7,7 @@ import flags_de from '../../assets/flags/de.png'
 import flags_fr from '../../assets/flags/fr.png'
 import './Header.scss'
 import { NavLink } from 'react-router-dom'
+import { PathHeader } from '../../routes/Path'
 
 
 interface Props {
@@ -93,15 +94,15 @@ const Header: React.FC<Props> = ({ isShowSidebar, handleShowSidebar }) => {
                                     <span >Admin</span>
                                 </a>
                                 <div className={isUserDrop ? "dropdown-menu show-user" : "dropdown-menu"} aria-labelledby="navbarDropdownMenuLink" >
-                                    <a href="#" className="dropdown-item">
+                                    <NavLink to={PathHeader.PROFILE} className="dropdown-item">
                                         My profile
-                                    </a>
-                                    <a href="#" className="dropdown-item">
+                                    </NavLink>
+                                    <NavLink to={PathHeader.SETTING} className="dropdown-item">
                                         Setting
-                                    </a>
-                                    <a href="#" className="dropdown-item">
+                                    </NavLink>
+                                    <NavLink to={PathHeader.LOG_OUT} className="dropdown-item">
                                         Log out
-                                    </a>
+                                    </NavLink>
                                 </div>
                             </li>
                         </ul>

@@ -1,6 +1,6 @@
-export const Paths = {
+export const PathAuth = {
     //AUTH
-    LOGIN: "/login",
+    LOG_IN: "/login",
     REGISTER: '/register',
     FORGOT_PASSWORD: '/forgot-password',
 
@@ -30,4 +30,9 @@ export const PathSidebar = {
     EMPLOYEE_REPORT: "/employee-report",
     ATTENDANCE_REPORT: '/attendance-report',
     LEAVE_REPORT: '/leave-report',
+}
+export const PathHeader = {
+    PROFILE: "/profile",
+    SETTING: '/setting',
+    LOG_OUT: '/login',
 }

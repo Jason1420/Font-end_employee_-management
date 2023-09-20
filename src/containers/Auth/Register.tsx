@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import Logo from '../../assets/images/logo/logo2.png'
 import './Register.scss'
+import { NavLink } from 'react-router-dom'
+import { PathAuth } from '../../routes/Path'
 const Register = () => {
     const [isShowPassword, setShowPassword] = useState<boolean>(false);
     const handleShowPassword = () => {
@@ -43,10 +45,11 @@ const Register = () => {
                         </div>
                     </div>
                     <div className="form-group text-center">
-                        <button className="btn-primary register-btn">Register</button>
+                        <NavLink to={PathAuth.LOG_IN} style={{ textDecoration: 'none' }}>
+                            <button className="btn-primary register-btn">Register</button></NavLink>
                     </div>
                     <div className="account-footer text-center">
-                        <p>Already have an account? <a href="auth-register">Login</a></p>
+                        <p>Already have an account? <NavLink to={PathAuth.LOG_IN}>Login</NavLink></p>
                     </div>
                 </div>
 

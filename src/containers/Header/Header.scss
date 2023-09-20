@@ -136,6 +136,17 @@
             position: fixed;
             margin: 6px 0 0 0;
             padding: 0 0;
+
+            .active {
+                color: var(--bs-dropdown-link-active-color);
+                text-decoration: none;
+                background-color: rgb(255, 148, 74);
+
+            }
+
+            .dropdown-item:focus {
+                background-color: rgb(255, 148, 74);
+            }
         }
 
     }
