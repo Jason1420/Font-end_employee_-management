@@ -7,7 +7,6 @@
      height: 100%;
      direction: flex;
      flex: 1;
-
      @keyframes swing {
          0% {
              transform: rotate(0deg);
@@ -174,7 +173,7 @@
 
      .sidebar-content {
          max-height: calc(100% - 30px);
-         height: calc(100% - 30px);
+         height: calc(100% - 80px);
          overflow-y: auto;
          position: relative;
      }

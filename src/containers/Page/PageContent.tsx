@@ -6,6 +6,7 @@ import AdminDashboard from '../../components/Dashboard/AdminDashboard';
 import { PathHeader, PathSidebar } from '../../routes/Path';
 import EmployeeDashboard from '../../components/Dashboard/EmployeeDashboard';
 import MyProfile from '../../components/User/MyProfile';
+import AllEmployee from '../../components/Employee/AllEmployee';
 
 interface Props {
     isShowSidebar: boolean
@@ -22,7 +23,8 @@ const PageContent: React.FC<Props> = (props) => {
                 <Routes>
                     <Route path={PathSidebar.DASHBOARD} element={<AdminDashboard />} />
                     <Route path={PathSidebar.EMPLOYEE_DASHBOARD} element={<EmployeeDashboard />} />
-                    <Route path={PathHeader.PROFILE} element={<MyProfile />} />
+                    <Route path={PathSidebar.ALL_EMPLOYEES} element={<AllEmployee />} />
+                    <Route path={PathHeader.PROFILE + "/*"} element={<MyProfile />} />
                 </Routes>
             </div>
         </div>

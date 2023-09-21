@@ -8,9 +8,9 @@
     display: flex;
     flex-direction: column;
     font-family: 'CircularStd', sans-serif;
-    padding-bottom: 40px;
+    padding:30px 20px 40px 10px ;
     .dashboard-header {
-        padding:30px 10px ;
+        
         display: flex;
         flex-direction: column;
 
@@ -25,6 +25,101 @@
             }
         }
     }
+
+    .dashboard-general{
+        border-radius: 3px;
+        border: 1px solid #ededed;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+
+        .view{
+            display: flex;
+            gap:20px;
+            .profile-view{
+               
+                width: 50%;
+                display: flex;
+                gap:20px;
+                .profile-image{
+                    padding: 15px 0 0 15px;
+                    img{
+                        border-radius: 50%;
+                        max-width: 120px;
+                        max-height: 120px;
+                    }
+                }
+                .profile-info{
+                    width: 100%;
+                    margin: 20px 0px;
+                    border-right: 2px dashed #c8c5c5 ;
+                    small{
+                        color: #8e8e8e;
+                        font-size: 15px;
+
+                    }
+                    h6{
+                        color: #8e8e8e;
+                        font-size: 14px;
+                    }
+                    .staff-id{
+                        font-size: 14px;
+                        margin-top: 10px;
+                    }
+                    button{
+                        background: linear-gradient(to right, #ff9b44 0%, #fc6075 100%);
+                        color:white;
+                        text-align: center;
+                        border-radius: 4px;
+                        padding:6px 12px;
+                        border-width: 0px;
+                        margin-top: 15px;
+                    }
+                }
+                
+            }
+            .personal-info{
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                padding-top: 15px;
+                .field{
+                    display: flex;
+                    line-height: 35px;
+                    .title{
+                        width: 25%;
+                    }
+                    .value{
+                        color: #888888;
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+        .tab{
+            border-radius: 3px;
+                border: 1px solid #ededed;
+                box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            button{
+                background-color: white;
+                border-radius: 4px 4px 0 0 ;
+                border-width: 0px;
+                color: #888888;
+                font-size: 15px;
+                line-height: 22.5px;
+                margin: 0 0 -1px 0;
+                padding: 8px 16px;
+
+            }
+            button:hover{
+                background-color: #d5d2d2;
+                color: black;
+            }
+        }
+    }
+
     .dashboard-content{
         
     }
