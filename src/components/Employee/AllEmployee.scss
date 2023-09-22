@@ -1,96 +1,96 @@
-@import '~bootstrap/scss/bootstrap';
-@import '../.././styles/fontawesome.scss';
-@import '../../index.scss';
+@import "~bootstrap/scss/bootstrap";
+@import "../.././styles/fontawesome.scss";
+@import "../../index.scss";
 
 .all-employees-container {
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
-    font-family: 'CircularStd', sans-serif;
-    padding:30px 20px 40px 10px ;
+    font-family: "CircularStd", sans-serif;
+    padding: 30px 20px 40px 10px;
     .employees-header {
         display: flex;
         justify-content: space-between;
-        .header-left{
+        .header-left {
             display: flex;
-        flex-direction: column;   
+            flex-direction: column;
             .bread-crumb {
                 display: flex;
                 color: #6c757d;
                 font-weight: 500;
                 text-align: left;
-                .breadcrumb-history{
+                .breadcrumb-history {
                     cursor: pointer;
-                    color:#212529;
+                    color: #212529;
                 }
             }
         }
-        .header-right{
+        .header-right {
             width: 50%;
             display: flex;
-            gap:15px;
+            gap: 15px;
             align-items: center;
             justify-content: flex-end;
-            i{
+            i {
                 font-size: 20px;
-                padding:5px 3px;
-                
-                
+                padding: 5px 3px;
             }
-            .fa-bars{
+            .fa-bars {
                 color: #999c9e !important;
             }
-            button{
+            button {
                 display: flex;
                 align-items: center;
                 border-radius: 3px;
                 border: 1px solid #ededed;
                 box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-                background-color: white; 
+                background-color: white;
             }
-            .add-employee{
-                background: #ff9b44 ;
+            .add-employee {
+                background: #ff9b44;
                 color: white;
                 text-align: center;
-                        border-radius: 25px;
-                        border-width: 0px;
-                        padding:0 15px;
-                        font-weight: 500;
-                        font-size: 16px;
-                        b{
-                            font-size: 25px;
-                            padding-right: 5px;
-                            padding-bottom: 1px;
-                        }
+                border-radius: 25px;
+                border-width: 0px;
+                padding: 0 15px;
+                font-weight: 500;
+                font-size: 16px;
+                b {
+                    font-size: 25px;
+                    padding-right: 5px;
+                    padding-bottom: 1px;
+                }
+                outline: none;
+            }
+            .add-employee:active {
+                opacity: 0.8;
             }
         }
-        
     }
-    .employees-content{
+    .employees-content {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: 50px 170px 170px 170px;
-        grid-gap: 20px;
-        
-        .item{
+        grid-gap: 25px;
+
+        .item {
             position: relative;
             height: 100%;
             width: 100%;
-            .box{
+            .box {
                 height: 100%;
                 width: 100%;
                 position: relative;
-                span{
+                span {
                     position: absolute;
                     left: 0;
                     padding: 15px;
                     pointer-events: none;
                     color: #999c9e;
                     transition: 0.3s;
-                    
                 }
-                input{
+                input {
                     height: 100%;
                     width: 100%;
                     padding: 20px 0 8px 15px;
@@ -98,25 +98,23 @@
                     border-radius: 4px;
                     border: 1px solid #ededed;
                     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-                    background-color: white; 
-                    color:#212529;
-                   outline: none;
+                    background-color: white;
+                    color: #212529;
+                    outline: none;
                 }
-              
+
                 .input:valid ~ span,
-                .input:focus ~ span{
+                .input:focus ~ span {
                     color: #6c757d;
                     transform: translateX(-5px) translateY(-14px);
                     font-size: 12px;
                 }
-                .input:focus{
+                .input:focus {
                     outline: 2px solid #ff9b44;
                 }
-                
             }
-            
-            .select{
-                
+
+            .select {
                 height: 100%;
                 width: 100%;
                 font-size: 16px;
@@ -124,31 +122,38 @@
                 padding: 2px 15px 0px 15px;
                 border: 1px solid #ededed;
                 box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-                background-color: white; 
-                color:#212529;
+                background-color: white;
+                color: #212529;
                 outline: none;
                 cursor: pointer;
             }
-            
-            .search{
+
+            .search {
                 height: 100%;
                 width: 100%;
                 font-size: 16px;
                 border-radius: 5px;
                 padding: 2px 15px 0px 15px;
                 border: 1px solid #ededed;
-                background-color: #55ce63; 
-                color:white;
+                background-color: #55ce63;
+                color: white;
                 outline: none;
-                transition: all .4s ease-in-out;
+                transition: all 0.4s ease-in-out;
             }
-            .search:hover{
+            .search:hover {
                 background-image: linear-gradient(to right, #0ba360, #3cba92, #30dd8a, #2bb673);
-    
             }
-            
+            .select-component-container {
+                height: 100%;
+                width: 100%;
+                background-color: white;
+                cursor: pointer;
+                .value {
+                    padding-top: 4px;
+                }
+            }
         }
-        .card-profile{
+        .card-profile {
             display: flex;
             position: relative;
             flex-direction: column;
@@ -157,36 +162,36 @@
             border-radius: 4px;
             border: 1px solid #ededed;
             box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-            background-color: white; 
-            a{
+            background-color: white;
+            a {
                 text-align: center;
             }
-            img{
+            img {
                 max-height: 80px;
                 max-width: 80px;
                 border-radius: 50%;
                 margin: 5px 0;
             }
-            h4{
-               font-size: 19px; 
-               font-weight: 500;
-               margin-top: 5px;
+            h4 {
+                font-size: 19px;
+                font-weight: 500;
+                margin-top: 5px;
             }
-            small{
-                color:#999c9e;
+            small {
+                color: #999c9e;
                 font-size: 14px;
                 font-weight: 500;
                 margin-top: -10px;
             }
-            .item-menu{
+            .item-menu {
                 position: absolute;
-                top:13px;
+                top: 13px;
                 right: 15px;
                 cursor: pointer;
                 font-size: 17px;
-                color:#727374;
+                color: #727374;
             }
-            .mini-dropdown{
+            .mini-dropdown {
                 position: absolute;
                 display: flex;
                 min-width: 50%;
@@ -194,52 +199,50 @@
                 justify-content: flex-start;
                 border-radius: 4px;
                 border: 1px solid #ededed;
-                background-color: white; 
+                background-color: white;
                 right: 9px;
-                top:40px;
+                top: 40px;
                 z-index: 1;
-                transition: all 0.2s ;
-                .dropdown--item{
+                transition: all 0.2s;
+                .dropdown--item {
                     border-radius: 4px;
                     padding: 5px 0;
                     cursor: pointer;
-                    a{
+                    a {
                         text-decoration: none;
                         color: black;
                         font-size: 14px;
-                        .fas{
-                            margin-right: 7px;}
-                            padding: 5px 10px;
+                        .fas {
+                            margin-right: 7px;
+                        }
+                        padding: 5px 10px;
                     }
                 }
-                .dropdown--item:hover{
+                .dropdown--item:hover {
                     background-color: rgb(241, 240, 240);
                 }
-                .dropdown--item:active{
+                .dropdown--item:active {
                     background-color: rgb(254, 144, 77);
                 }
-                
             }
         }
-            .item:first-child{
-                grid-column: 1/2;
-                grid-row: 1/2;
-            }
-            .item:nth-child(2){
-                grid-column: 2/3;
-                grid-row: 1/2;
-            }
-            .item:nth-child(3){
-                grid-column: 3/4;
-                grid-row: 1/2;
-            }
-            .item:nth-child(4){
-                grid-column: 4/5;
-                grid-row: 1/2;
-            }
-        
+        .item:first-child {
+            grid-column: 1/2;
+            grid-row: 1/2;
+        }
+        .item:nth-child(2) {
+            grid-column: 2/3;
+            grid-row: 1/2;
+        }
+        .item:nth-child(3) {
+            grid-column: 3/4;
+            grid-row: 1/2;
+        }
+        .item:nth-child(4) {
+            grid-column: 4/5;
+            grid-row: 1/2;
+        }
     }
-    .all-employee-pagionation{
-        
+    .all-employee-pagionation {
     }
 }

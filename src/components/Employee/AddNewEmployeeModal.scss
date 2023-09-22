@@ -1,0 +1,51 @@
+@import "~bootstrap/scss/bootstrap";
+@import "../.././styles/fontawesome.scss";
+@import "../../index.scss";
+
+.modal-dialog {
+    .modal-header {
+        position: relative;
+        padding-bottom: 50px;
+        .contained-modal-title-vcenter {
+            position: absolute;
+            top: 20%;
+            left: 40%;
+            padding: 10px 0;
+        }
+    }
+    .modal-body {
+        padding: 20px 30px;
+        .form-add-employee {
+            font-weight: 500;
+            row-gap: 20px;
+            .input-form {
+                label {
+                    margin-bottom: 5px;
+                    margin-left: -2px;
+                }
+            }
+        }
+    }
+}
+button.button-custom {
+    margin: 0 auto;
+    margin-top: 9px;
+    border-radius: 25px;
+    border: 1px solid #ededed;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    min-width: 200px;
+    min-height: 50px;
+    background: #ff9b44;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+}
+table.table.table-striped {
+    font-size: 14px;
+}
+th.row-center {
+    font-weight: 500;
+    padding-left: 18px;
+}
+td {
+}

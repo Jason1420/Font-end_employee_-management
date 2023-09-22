@@ -1,16 +1,15 @@
-@import '~bootstrap/scss/bootstrap';
-@import '../.././styles/fontawesome.scss';
-@import '../../index.scss';
+@import "~bootstrap/scss/bootstrap";
+@import "../.././styles/fontawesome.scss";
+@import "../../index.scss";
 
 .dashboard-profile-container {
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
-    font-family: 'CircularStd', sans-serif;
-    padding:30px 20px 40px 10px ;
+    font-family: "CircularStd", sans-serif;
+    padding: 30px 20px 40px 10px;
     .dashboard-header {
-        
         display: flex;
         flex-direction: column;
 
@@ -19,14 +18,14 @@
             color: #6c757d;
             font-weight: 500;
             text-align: left;
-            .breadcrumb-history{
+            .breadcrumb-history {
                 cursor: pointer;
-                color:#212529;
+                color: #212529;
             }
         }
     }
 
-    .dashboard-general{
+    .dashboard-general {
         border-radius: 3px;
         border: 1px solid #ededed;
         box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
@@ -35,93 +34,108 @@
         flex-direction: column;
         margin-top: 10px;
 
-        .view{
+        .view {
             display: flex;
-            gap:20px;
-            .profile-view{
-               
+            gap: 20px;
+            .profile-view {
                 width: 50%;
                 display: flex;
-                gap:20px;
-                .profile-image{
+                gap: 20px;
+                .profile-image {
                     padding: 15px 0 0 15px;
-                    img{
+                    img {
                         border-radius: 50%;
                         max-width: 120px;
                         max-height: 120px;
                     }
                 }
-                .profile-info{
+                .profile-info {
                     width: 100%;
                     margin: 20px 0px;
-                    border-right: 2px dashed #c8c5c5 ;
-                    small{
+                    border-right: 2px dashed #c8c5c5;
+                    small {
                         color: #8e8e8e;
                         font-size: 15px;
-
                     }
-                    h6{
+                    h6 {
                         color: #8e8e8e;
                         font-size: 14px;
                     }
-                    .staff-id{
+                    .staff-id {
                         font-size: 14px;
                         margin-top: 10px;
                     }
-                    button{
+                    button {
                         background: linear-gradient(to right, #ff9b44 0%, #fc6075 100%);
-                        color:white;
+                        color: white;
                         text-align: center;
                         border-radius: 4px;
-                        padding:6px 12px;
+                        padding: 6px 12px;
                         border-width: 0px;
                         margin-top: 15px;
                     }
                 }
-                
             }
-            .personal-info{
+            .personal-info {
+                position: relative;
                 width: 50%;
                 display: flex;
                 flex-direction: column;
                 padding-top: 15px;
-                .field{
+                .field {
                     display: flex;
                     line-height: 35px;
-                    .title{
+                    .title {
                         width: 25%;
                     }
-                    .value{
+                    .value {
                         color: #888888;
                         font-size: 15px;
                     }
                 }
+                .edit-user {
+                    position: absolute;
+
+                    right: 3%;
+                    top: 8%;
+                    font-size: 14px;
+                    color: #888888;
+                    background-color: #eae7e7;
+                    border-radius: 100%;
+                    height: 25px;
+                    width: 25px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                }
+                .edit-user:hover {
+                    color: blue;
+                    background-color: #d8d3d3;
+                }
             }
         }
-        .tab{
+        .tab {
             border-radius: 3px;
-                border: 1px solid #ededed;
-                box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-            button{
+            border: 1px solid #ededed;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            button {
                 background-color: white;
-                border-radius: 4px 4px 0 0 ;
+                border-radius: 4px 4px 0 0;
                 border-width: 0px;
                 color: #888888;
                 font-size: 15px;
                 line-height: 22.5px;
                 margin: 0 0 -1px 0;
                 padding: 8px 16px;
-
             }
-            button:hover{
+            button:hover {
                 background-color: #d5d2d2;
                 color: black;
             }
         }
     }
 
-    .dashboard-content{
-        
+    .dashboard-content {
     }
-    
 }

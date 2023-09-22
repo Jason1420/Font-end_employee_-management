@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './MyProfile.scss'
 import avatar from '../../assets/images/profiles/avatar-07.jpg';
 import { NavLink, Routes, Route } from 'react-router-dom';
 import Profile from './MyProfileChild/Profile.';
 import Projects from '../Project/Projects';
 import Bank_Statutory from './MyProfileChild/Bank_Statutory';
+import UpdateProfile from './MyProfileChild/UpdateProfile';
 const MyProfile = () => {
+    const [isOpenEditForm, setIsOpenEditForm] = useState<boolean>(false)
+    const handleOpenEditForm = () => {
+
+    }
     return (
         <div className='dashboard-profile-container'>
             <div className="dashboard-header">
@@ -31,6 +36,7 @@ const MyProfile = () => {
                         </div>
                     </div>
                     <div className="personal-info">
+                        <i className="fas fa-pencil-alt edit-user" onClick={() => handleOpenEditForm()}></i>
                         <div className="field">
                             <div className="title">
                                 Phone:
