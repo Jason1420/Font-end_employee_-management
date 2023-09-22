@@ -94,7 +94,9 @@ const MyProfile = () => {
                     </div>
                 </div>
                 <div className="tab">
-                    <NavLink to='/profile'><button>Profile</button></NavLink>
+                    <NavLink className={({ isActive }) =>
+                        isActive ? "active" : ""
+                    } to='/profile' end><button>Profile</button></NavLink>
                     <NavLink to='/profile/2'><button>Project</button></NavLink>
                     <NavLink to='/profile/3'><button>Bank & Statutory (Admin Only)</button></NavLink>
 

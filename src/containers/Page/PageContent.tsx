@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import SidebarMenu from '../SidebarMenu/SidebarMenu'
 import './PageContent.scss'
 import { Routes, Route } from 'react-router-dom';
@@ -12,10 +12,17 @@ interface Props {
     isShowSidebar: boolean
 }
 const PageContent: React.FC<Props> = (props) => {
-
+    const [smoothSidebar, setSmoothSidebar] = useState<string>("")
+    useEffect(() => {
+        if (props.isShowSidebar) {
+            setSmoothSidebar("")
+        } else {
+            setTimeout(() => setSmoothSidebar("hide-side-bar"), 300)
+        }
+    }, [props.isShowSidebar])
     return (
         <div className="page-container">
-            <div className="page-sidebar">
+            <div className={`page-sidebar ${props.isShowSidebar ? "" : smoothSidebar}`}>
                 <SidebarMenu isShowSidebar={props.isShowSidebar} />
             </div>
 
