@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import './MyProfile.scss'
-import avatar from '../../assets/images/profiles/avatar-07.jpg';
+import avatar from '../../assets/images/profiles/avatar-05.jpg';
 import { NavLink, Routes, Route } from 'react-router-dom';
-import Profile from './MyProfileChild/Profile.';
+import { Profile, Bank_Statutory, UpdateProfile } from './MyProfileChild';
 import Projects from '../Project/Projects';
-import Bank_Statutory from './MyProfileChild/Bank_Statutory';
-import UpdateProfile from './MyProfileChild/UpdateProfile';
 const MyProfile = () => {
     const [isOpenEditForm, setIsOpenEditForm] = useState<boolean>(false)
     const handleOpenEditForm = () => {

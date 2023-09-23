@@ -7,6 +7,7 @@ import { PathHeader, PathSidebar } from '../../routes/Path';
 import EmployeeDashboard from '../../components/Dashboard/EmployeeDashboard';
 import MyProfile from '../../components/User/MyProfile';
 import AllEmployee from '../../components/Employee/AllEmployee';
+import { CustomScrollbars } from '../../components/Helper';
 
 interface Props {
     isShowSidebar: boolean
@@ -27,12 +28,14 @@ const PageContent: React.FC<Props> = (props) => {
             </div>
 
             <div className={props.isShowSidebar ? "page-content" : "page-content-2"} >
-                <Routes>
-                    <Route path={PathSidebar.DASHBOARD} element={<AdminDashboard />} />
-                    <Route path={PathSidebar.EMPLOYEE_DASHBOARD} element={<EmployeeDashboard />} />
-                    <Route path={PathSidebar.ALL_EMPLOYEES} element={<AllEmployee />} />
-                    <Route path={PathHeader.PROFILE + "/*"} element={<MyProfile />} />
-                </Routes>
+                <CustomScrollbars style={{ height: "100vh", width: "100%" }}>
+                    <Routes>
+                        <Route path={PathSidebar.DASHBOARD} element={<AdminDashboard />} />
+                        <Route path={PathSidebar.EMPLOYEE_DASHBOARD} element={<EmployeeDashboard />} />
+                        <Route path={PathSidebar.ALL_EMPLOYEES} element={<AllEmployee />} />
+                        <Route path={PathHeader.PROFILE + "/*"} element={<MyProfile />} />
+                    </Routes>
+                </CustomScrollbars>
             </div>
         </div>
     )

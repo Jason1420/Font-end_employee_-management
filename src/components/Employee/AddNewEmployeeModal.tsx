@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './AddNewEmployeeModal.scss'
 import { Modal, Button, Form } from 'react-bootstrap'
-import SelectComponent from '../Helper/SelectComponent/SelectComponent'
+import { SelectComponent } from '../Helper/index'
 
 interface Props {
     isShowModalAddNew: boolean,
@@ -72,13 +72,11 @@ const AddNewEmployeeModal: React.FC<Props> = (props) => {
                         </div>
                         <div className="form-group col-sm-6 input-form ">
                             <label htmlFor="quarter">Quarter</label>
-                            {/* <input type="text" className="form-control " id="quarter" /> */}
                             <SelectComponent options={options} value={value}
                                 selectOnChange={(o) => setValue(o)} />
                         </div>
                         <div className="form-group col-sm-6 input-form ">
                             <label htmlFor="department">Department<span className="text-danger">*</span></label>
-                            {/* <input type="text" className="form-control " id="department" /> */}
                             <SelectComponent options={options} value={value}
                                 selectOnChange={(o) => setValue(o)} />
                         </div>

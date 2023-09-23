@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import './AllEmployee.scss'
 import { NavLink } from 'react-router-dom'
 import IMAGES from '../../assets/images/profiles'
-import Pagination from '../Helper/Pagination'
 import AddNewEmployeeModal from './AddNewEmployeeModal'
-import SelectComponent from '../Helper/SelectComponent/SelectComponent'
+import { SelectComponent, Pagination } from '../Helper'
 
 const options = [
     { label: "Select Designation", value: 0 },
