@@ -28,7 +28,7 @@ const PageContent: React.FC<Props> = (props) => {
             </div>
 
             <div className={props.isShowSidebar ? "page-content" : "page-content-2"} >
-                <CustomScrollbars style={{ height: "100vh", width: "100%" }}>
+                <CustomScrollbars style={{ height: "100%  ", width: "100%" }}>
                     <Routes>
                         <Route path={PathSidebar.DASHBOARD} element={<AdminDashboard />} />
                         <Route path={PathSidebar.EMPLOYEE_DASHBOARD} element={<EmployeeDashboard />} />
