@@ -1,6 +1,6 @@
 @import "~bootstrap/scss/bootstrap";
-@import "../.././styles/fontawesome.scss";
-@import "../../index.scss";
+@import "../../../styles/fontawesome.scss";
+@import "../../../index.scss";
 
 .pagination--container {
     display: flex;
@@ -47,7 +47,6 @@
         .page-button {
             border-radius: 5px;
             border: 1px solid #ededed;
-            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
             background-color: #ff9b44;
             color: white;
             min-width: 60px;

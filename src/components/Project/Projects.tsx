@@ -1,5 +1,5 @@
 import React from 'react'
-import Pagination from '../Helper/Pagination'
+import { Pagination } from '../Helper'
 
 const Projects = () => {
     return (

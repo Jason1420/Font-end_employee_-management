@@ -8,7 +8,8 @@ import Login from './containers/Auth/Login';
 import { PathAuth } from './routes/Path';
 import Register from './containers/Auth/Register';
 import ResetPassword from './containers/Auth/ResetPassword';
-
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 
 // import reportWebVitals from './reportWebVitals';
 
@@ -16,7 +17,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<App />} />
@@ -26,7 +27,7 @@ root.render(
         <Route path='/*' element={<App />} />
       </Routes>
     </BrowserRouter>
-  </React.StrictMode>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

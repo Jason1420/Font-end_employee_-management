@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './AddNewEmployeeModal.scss'
 import { Modal, Button, Form } from 'react-bootstrap'
-import { SelectComponent } from '../Helper/index'
+import { SelectComponent } from '../../Helper/index'
 
 interface Props {
     isShowModalAddNew: boolean,

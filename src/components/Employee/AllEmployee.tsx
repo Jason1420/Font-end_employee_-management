@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './AllEmployee.scss'
 import { NavLink } from 'react-router-dom'
 import IMAGES from '../../assets/images/profiles'
-import AddNewEmployeeModal from './AddNewEmployeeModal'
+import AddNewEmployeeModal from './AddNewEmployee/AddNewEmployeeModal'
 import { SelectComponent, Pagination } from '../Helper'
 
 const options = [
