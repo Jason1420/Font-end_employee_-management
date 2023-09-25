@@ -19,8 +19,8 @@ const Register = () => {
                     <div className="register-title">Register</div>
                     <div className="register-subtitle">Access our dashboard</div>
                     <div className="register-input">
-                        <label >Email</label>
-                        <input type='email' className='form-control' placeholder='Enter email' />
+                        <label >Username</label>
+                        <input type='username' className='form-control' placeholder='Enter username' />
                     </div>
                     <div className="register-input ">
                         <div className="label-form">
@@ -38,7 +38,7 @@ const Register = () => {
                             <label>Repeat Password</label>
                         </div>
                         <div className="password-input-form">
-                            <input type={isShowPassword ? 'text' : 'password'} className='form-control' placeholder='Enter password' />
+                            <input type={isShowPassword ? 'text' : 'password'} className='form-control' placeholder='Enter repeat password' />
                             <i className={isShowPassword ? "far fa-eye" : "far fa-eye-slash"}
                                 onClick={() => handleShowPassword()}></i>
 

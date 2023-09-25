@@ -23,7 +23,6 @@ function App() {
       </div>
 
       <div className="app-content">
-
         <PageContent isShowSidebar={isShowSidebar} />
       </div>
     </div>

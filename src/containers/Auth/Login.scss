@@ -1,10 +1,7 @@
-@import '~bootstrap/scss/bootstrap';
-@import '../../styles/fontawesome.scss';
-
-
+@import "~bootstrap/scss/bootstrap";
+@import "../../styles/fontawesome.scss";
 
 .login-background {
-
     height: 100vh;
     background-color: rgb(247, 247, 247);
 
@@ -17,7 +14,6 @@
         top: 0;
         left: 0;
         right: 0;
-
 
         .login-logo {
             text-align: center;
@@ -57,7 +53,12 @@
                     font-size: 16px;
                     margin-bottom: 7px;
                 }
-
+                .login-error-response {
+                    color: red;
+                    font-size: 14px;
+                    font-style: italic;
+                    margin: 0 0;
+                }
                 .label-form {
                     position: relative;
 
@@ -70,6 +71,7 @@
                     .forgot-password {
                         position: absolute;
                         right: 0;
+                        top: 0;
                         color: #8e8e8e !important;
                         font-weight: 500;
                         text-decoration: none;
@@ -105,8 +107,6 @@
                     font-weight: 500;
                     font-size: 15px;
                 }
-
-
             }
 
             button {
@@ -122,13 +122,10 @@
                 margin-bottom: 25px;
             }
 
-
-
             .account-footer {
                 font-weight: 500;
                 font-size: 15px;
             }
         }
     }
-
 }

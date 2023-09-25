@@ -20,7 +20,6 @@ const SidebarMenu: React.FC<Props> = (props) => {
         setShow([...updateStateShow]);
         setInit(false)
     }
-    console.log("check props", props.isShowSidebar)
     return (
         <div className='sidebar-menu-container'>
             <div className={`page-wrapper chiller-theme toggled ${props.isShowSidebar ? "sidebar-show" : "sidebar-hide"}`}  >
