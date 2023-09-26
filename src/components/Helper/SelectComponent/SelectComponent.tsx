@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import './SelectComponent.scss'
+import { SelectOption } from '../../../types/SelectOption';
 
-interface SelectOptions {
-    label: string,
-    value: any
-}
+
 
 interface SelectProps {
-    options: SelectOptions[],
-    value?: SelectOptions,
-    selectOnChange: (value: SelectOptions | undefined) => void
+    options: SelectOption[],
+    id?: SelectOption,
+    selectOnChange: (id: SelectOption | undefined) => void
 }
 
 
 
-const SelectComponent = ({ value, selectOnChange, options }: SelectProps) => {
+const SelectComponent = ({ id, selectOnChange, options }: SelectProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [highlightIndex, setHighlightedIndex] = useState<number>()
     // useEffect(() => {
@@ -23,18 +21,18 @@ const SelectComponent = ({ value, selectOnChange, options }: SelectProps) => {
     const clearOption = () => {
         selectOnChange(undefined);
     }
-    const selectOption = (option: SelectOptions) => {
-        if (option !== value) selectOnChange(option);
+    const selectOption = (option: SelectOption) => {
+        if (option !== id) selectOnChange(option);
     }
-    const isOptionSelected = (option: SelectOptions) => {
-        return option === value;
+    const isOptionSelected = (option: SelectOption) => {
+        return option === id;
     }
 
     return (
         <div onBlur={() => setIsOpen(false)}
             onClick={() => setIsOpen(o => !o)} tabIndex={0} className="select-component-container">
-            <span className="value">
-                {value?.label}
+            <span className="id">
+                {id?.name}
             </span>
             {/* <button onClick={e => {
                 e.stopPropagation()
@@ -60,8 +58,8 @@ const SelectComponent = ({ value, selectOnChange, options }: SelectProps) => {
                             className={`option ${isOptionSelected(option) ? "selected" : ""}
                             ${index === highlightIndex ? "highlighted" : ""}
                             `}
-                            key={option.value}>
-                            {option.label}
+                            key={option.id}>
+                            {option.name}
                         </li>)
                 })}
             </ul>

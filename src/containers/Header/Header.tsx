@@ -41,11 +41,8 @@ const Header: React.FC<Props> = ({ isShowSidebar, handleShowSidebar }) => {
     const navigate = useNavigate();
     const handleLogout = async () => {
         try {
-
             const postUrl = `http://localhost:8888/log-out`
             const res = await axiosJWT.post(postUrl, null, { headers },);
-
-            console.log("access token 0s", res)
             dispatch(isLogout())
             setUserDrop(false)
             navigate(PathAuth.LOG_IN)
@@ -55,7 +52,7 @@ const Header: React.FC<Props> = ({ isShowSidebar, handleShowSidebar }) => {
     }
 
     return (
-        <div className='header row' tabIndex={0}>
+        <div className='header ' tabIndex={0}>
             <div className="start col-6 row">
                 <div className={`header-left ${isShowSidebar ? "col-4" : "col-2"}`}>
                     <Link to="/" className="logo">
@@ -69,64 +66,57 @@ const Header: React.FC<Props> = ({ isShowSidebar, handleShowSidebar }) => {
                 </div>
 
             </div>
-            <div className="end nav-bar col-6 row">
-                <div className='search-form col-2'>
+            <div className="end ">
+                <div className='search-form '>
                     <input className="form-control" type="text" placeholder="Search here" />
                     <i className="fa fa-search"></i>
                 </div>
-                <div className="btn-group col-2">
-                    <ul className="navbar-nav ml-auto">
-                        <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="navbarDropdownMenuLink" role="button" aria-expanded="false" onClick={(event) => handleLanguageDrop(event)}>
-                                <img src={flags_us} alt="" height="20" /> <span >English</span>
-                            </a>
-                            <div className={isLanguageDrop ? "dropdown-menu show" : "dropdown-menu"} aria-labelledby="navbarDropdownMenuLink" >
-                                <a href="#" className="dropdown-item">
-                                    <img src={flags_us} alt="" height="16" /> English
-                                </a>
-                                <a href="#" className="dropdown-item">
-                                    <img src={flags_fr} alt="" height="16" /> French
-                                </a>
-                                <a href="#" className="dropdown-item">
-                                    <img src={flags_es} alt="" height="16" /> Spanish
-                                </a>
-                                <a href="#" className="dropdown-item">
-                                    <img src={flags_de} alt="" height="16" /> German
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
+                <div className="btn-group ">
+                    <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="navbarDropdownMenuLink" role="button" aria-expanded="false" onClick={(event) => handleLanguageDrop(event)}>
+                        <img src={flags_us} alt="" height="20" /> <span >English</span>
+                    </a>
+                    <div className={isLanguageDrop ? "dropdown-menu show" : "dropdown-menu"} aria-labelledby="navbarDropdownMenuLink" >
+                        <a href="#" className="dropdown-item">
+                            <img src={flags_us} alt="" height="16" /> English
+                        </a>
+                        <a href="#" className="dropdown-item">
+                            <img src={flags_fr} alt="" height="16" /> French
+                        </a>
+                        <a href="#" className="dropdown-item">
+                            <img src={flags_es} alt="" height="16" /> Spanish
+                        </a>
+                        <a href="#" className="dropdown-item">
+                            <img src={flags_de} alt="" height="16" /> German
+                        </a>
+                    </div>
                 </div>
 
-                <div className='notify col-1'>
+                <div className='notify '>
                     <i className="far fa-bell "></i>
                 </div>
 
-                <div className='message col-1'>
+                <div className='message '>
                     <i className="far fa-comment-dots"></i>
                 </div>
 
-                <div className='btn-group col-2' >
-                    <ul className="navbar-nav ml-auto">
-                        <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="navbarDropdownMenuLink" role="button" aria-expanded="false" onClick={(event) => handleUser(event)}>
-                                <span className="user-img"><img src={avatar} alt="" /><span className="status-online"></span></span>
-                                <span >Admin</span>
-                            </a>
-                            <div className={isUserDrop ? "dropdown-menu show-user" : "dropdown-menu"} aria-labelledby="navbarDropdownMenuLink">
-                                <Link to={PathHeader.PROFILE} className="dropdown-item" onClick={() => setUserDrop(false)}>
-                                    My profile
-                                </Link>
-                                <Link to={PathHeader.SETTING} className="dropdown-item" onClick={() => setUserDrop(false)}>
-                                    Setting
-                                </Link>
-                                <button className="dropdown-item" onClick={() => handleLogout()}
-                                >
-                                    Log out
-                                </button>
-                            </div>
-                        </li>
-                    </ul>
+                <div className='user-profile' >
+                    <a className="user-text" href="#" role="button" aria-expanded="false" onClick={(event) => handleUser(event)}>
+                        <span className="user-img"><img src={avatar} alt="" /><span className="status-online"></span></span>
+                        <span >{user.userDTO.username}</span>
+                        <span className={isUserDrop ? "caret-open" : "caret"}></span>
+                    </a>
+                    <div className={isUserDrop ? "dropdown-menu show-user" : "dropdown-menu"} >
+                        <Link to={PathHeader.PROFILE} className="dropdown-item" onClick={() => setUserDrop(false)}>
+                            My profile
+                        </Link>
+                        <Link to={PathHeader.SETTING} className="dropdown-item" onClick={() => setUserDrop(false)}>
+                            Setting
+                        </Link>
+                        <button className="dropdown-item" onClick={() => handleLogout()}
+                        >
+                            Log out
+                        </button>
+                    </div>
                 </div>
             </div>
         </div >

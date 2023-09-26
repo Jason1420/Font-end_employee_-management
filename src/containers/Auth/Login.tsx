@@ -29,6 +29,7 @@ const Login = () => {
         setPassword("")
         try {
             const loginUrl = serverUrl + PathAuth.LOG_IN
+            console.log(loginUrl)
             const result = await axios.post(loginUrl, {
                 username: username,
                 password: password
@@ -55,7 +56,7 @@ const Login = () => {
             }
         }
     }
-    // refresh token
+    // refresh token function
     const axiosJWT = axios.create();
 
     const refreshToken = async () => {
@@ -68,7 +69,7 @@ const Login = () => {
             console.log(error)
         }
     }
-
+    // custom axios instance to refresh token when access token expired
     axiosJWT.interceptors.request.use(async (config) => {
         let date = new Date();
         const decodedToken: any = jwtDecode(user.accessToken);
@@ -87,27 +88,12 @@ const Login = () => {
             return Promise.reject(error);
         });
 
-
-
-    // axios.interceptors.response.use(
-    //     (response) => { // Any status code from range of 2xx
-    //         // Do something with response data
-    //         return response;
-    //     },
-    //     (error) => { // Any status codes outside range of 2xx
-    //         // Do something with response error
-    //         return Promise.reject(error);
-    //     });
-
+    // this function was used to test api axios
     const handleGetApiViaAccessToken = async () => {
         console.log("check header : ", headers)
         try {
             const getUrl = `http://localhost:8888/api/v1/employee/1`
-            // const getUrl = `http://localhost:8888/log-out`
             const result = await axiosJWT.get(getUrl, { headers },);
-            // const getUrl = `http://localhost:8888/log-out`
-            // const result = await axiosJWT.post(getUrl, { headers },);
-            // console.log(result)
         } catch (error) {
             console.log(error)
         }
@@ -125,27 +111,33 @@ const Login = () => {
                         <label >Username</label>
                         {loginErrorCode === 2 && <p className='login-error-response'>*Please enter username</p>}
                         {loginErrorCode === 3 && <p className='login-error-response'>*Username not exist</p>}
-                        <input type='text' className='form-control' placeholder='Enter username'
+                        <input type='text' tabIndex={1} className='form-control' placeholder='Enter username'
                             value={username} onChange={(event) => setUsername(event.target.value)} />
                     </div>
                     <div className="login-input ">
                         <div className="label-form">
                             <label>Password</label>
                             {loginErrorCode === 1 && <p className='login-error-response'>*Incorrect password</p>}
-                            <NavLink className="forgot-password" to={PathAuth.FORGOT_PASSWORD}>Forgot your password?</NavLink>
+                            <NavLink tabIndex={4} className="forgot-password" to={PathAuth.FORGOT_PASSWORD}>Forgot your password?</NavLink>
                         </div>
                         <div className="password-input-form">
                             <input type={isShowPassword ? 'text' : 'password'} className='form-control' placeholder='Enter password'
-                                value={password} onChange={(event) => setPassword(event.target.value)} />
+                                tabIndex={2} value={password} onChange={(event) => setPassword(event.target.value)}
+                                onKeyUp={(event) => {
+                                    if (event.key === "Enter") {
+                                        handleLogin();
+                                    }
+
+                                }}
+                            />
                             <i className={isShowPassword ? "far fa-eye" : "far fa-eye-slash"}
-                                onClick={() => handleShowPassword()}></i>
+                                onClick={() => handleShowPassword()}
+                            ></i>
                         </div>
                     </div>
                     <div className="form-group text-center">
                         <button className="btn-primary login-btn"
-                            onClick={() => handleLogin()}>Login</button>
-                        <button className="btn-primary login-btn"
-                            onClick={() => handleGetApiViaAccessToken()}>GetAPI</button>
+                            tabIndex={3} onClick={() => handleLogin()}>Login</button>
                     </div>
                     <div className="account-footer text-center">
                         <p>Don't have an account yet? <NavLink to={PathAuth.REGISTER}>Register</NavLink></p>

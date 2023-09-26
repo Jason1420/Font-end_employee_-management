@@ -36,3 +36,9 @@ export const PathHeader = {
     SETTING: '/setting',
     LOG_OUT: '/login',
 }
+
+
+export const CrudApiPath = {
+    GET_DATA_DEFAULT: "/api/v1/data-default",
+    CREATE_USER: "/user"
+}

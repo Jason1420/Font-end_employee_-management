@@ -70,20 +70,20 @@ const UpdateProfile: React.FC<Props> = (props) => {
                         <div className="form-group col-sm-6 input-form ">
                             <label htmlFor="quarter">Quarter</label>
                             {/* <input type="text" className="form-control " id="quarter" /> */}
-                            <SelectComponent options={options} value={value}
-                                selectOnChange={(o) => setValue(o)} />
+                            {/* <SelectComponent options={options} value={value}
+                                selectOnChange={(o) => setValue(o)} /> */}
                         </div>
                         <div className="form-group col-sm-6 input-form ">
                             <label htmlFor="department">Department<span className="text-danger">*</span></label>
                             {/* <input type="text" className="form-control " id="department" /> */}
-                            <SelectComponent options={options} value={value}
-                                selectOnChange={(o) => setValue(o)} />
+                            {/* <SelectComponent options={options} value={value}
+                                selectOnChange={(o) => setValue(o)} /> */}
                         </div>
                         <div className="form-group col-sm-6 input-form ">
                             <label htmlFor="designation">Designation<span className="text-danger">*</span></label>
                             {/* <input type="text" className="form-control " id="designation" /> */}
-                            <SelectComponent options={options} value={value}
-                                selectOnChange={(o) => setValue(o)} />
+                            {/* <SelectComponent options={options} value={value}
+                                selectOnChange={(o) => setValue(o)} /> */}
                         </div>
                     </div>
                 </Form>

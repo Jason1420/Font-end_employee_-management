@@ -3,14 +3,21 @@ import { Employee } from '../../types/Employee'
 
 export interface UserLogin {
     accessToken: string,
-    userDTO: {}
+    userDTO: {
+        id: number | null,
+        username: string
+
+    }
     logged: boolean
 
 }
 
 const initialState: UserLogin = {
     accessToken: "",
-    userDTO: {},
+    userDTO: {
+        id: null,
+        username: ""
+    },
     logged: false
 }
 

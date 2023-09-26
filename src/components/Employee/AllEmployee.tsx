@@ -6,17 +6,17 @@ import AddNewEmployeeModal from './AddNewEmployee/AddNewEmployeeModal'
 import { SelectComponent, Pagination } from '../Helper'
 
 const options = [
-    { label: "Select Designation", value: 0 },
-    { label: "Web Developer", value: 1 },
-    { label: "Web Designer", value: 2 },
-    { label: "Android Developer", value: 3 },
-    { label: "Ios Developer", value: 4 },
+    { name: "Select Designation", id: 0 },
+    { name: "Web Developer", id: 1 },
+    { name: "Web Designer", id: 2 },
+    { name: "Android Developer", id: 3 },
+    { name: "Ios Developer", id: 4 },
 ]
 
 const AllEmployee = () => {
     const [showMiniMenu, setShowMiniMenu] = useState<boolean[]>(Array(12).fill(false))
     const [isShowModalAddNew, setIsShowModalAddNew] = useState<boolean>(false)
-    const [value, setValue] = useState<typeof options[0] | undefined>(options[0]);
+    const [id, setId] = useState<typeof options[0] | undefined>(options[0]);
 
     const handleOpenMiniMenu = (index: number) => {
         let showMiniMenuNewState = [...showMiniMenu];
@@ -65,8 +65,8 @@ const AllEmployee = () => {
 
 
                     <div className="item designation ">
-                        <SelectComponent options={options} value={value}
-                            selectOnChange={(o) => setValue(o)} />
+                        <SelectComponent options={options} id={id}
+                            selectOnChange={(o) => setId(o)} />
 
                     </div>
                     <div className="item"><button className="search">SEARCH</button></div>

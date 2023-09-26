@@ -1,29 +1,33 @@
-import React from 'react';
 import './App.scss';
-import Header from './containers/Header/Header';
-import { useState } from 'react';
-import PageContent from './containers/Page/PageContent';
-import { Routes, Route } from 'react-router-dom';
-function App() {
+import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
+import { PathAuth } from './routes/Path';
+import Login from './containers/Auth/Login';
+import Register from './containers/Auth/Register';
+import ResetPassword from './containers/Auth/ResetPassword';
+import MainPage from './MainPage';
+import { useSelector } from 'react-redux';
+import { RootState } from './store/store';
 
-  const [isShowSidebar, setShowSidebar] = useState<boolean>(true)
-  const handleShowSidebar = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    event.preventDefault();
-    setShowSidebar(!isShowSidebar)
-  }
 
+const App = () => {
+  const user = useSelector((state: RootState) => state.auth)
   return (
     <div className="app-container">
-      <Routes>
-        <Route />
-      </Routes>
-      <div className='app-header'>
-        <Header isShowSidebar={isShowSidebar} handleShowSidebar={handleShowSidebar} />
-      </div>
-
-      <div className="app-content">
-        <PageContent isShowSidebar={isShowSidebar} />
-      </div>
+      <BrowserRouter>
+        <Routes>
+          {
+            !user.logged ?
+              <>
+                <Route path={PathAuth.LOG_IN} element={<Login />} />
+                <Route path={PathAuth.REGISTER} element={<Register />} />
+                <Route path={PathAuth.FORGOT_PASSWORD} element={<ResetPassword />} />
+                <Route path='/*' element={<Navigate to={PathAuth.LOG_IN} />} />
+              </>
+              :
+              <Route path='/*' element={<MainPage />} />
+          }
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

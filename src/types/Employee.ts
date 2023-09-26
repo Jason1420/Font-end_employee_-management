@@ -1,16 +1,19 @@
 export interface Employee {
-    id: number,
+    id?: number,
     code: string
     firstName: string
     lastName: string
     email: string
-    gender: string
-    dateOfBirth: Date
+    gender: string | undefined
+    dateOfBirth: string
     phoneNumber: string
     joiningDate: string
-    designation: string
-    quarter: string
-    avatar: string,
-    salary: number
-    department: string
+    designation: string | undefined
+    quarter: string | undefined
+    avatar?: string,
+    salary?: number
+    department: string | undefined
+    username: string,
+    password: string,
+    confirmPassword: string
 }
