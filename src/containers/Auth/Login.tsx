@@ -6,10 +6,9 @@ import { PathAuth, PathSidebar } from '../../routes/Path';
 import axios, { Axios, AxiosError } from 'axios'
 import { AuthenticateCode, clientUrl, serverUrl } from '../../utils/constant';
 import { useDispatch, useSelector } from 'react-redux';
-import { isLogged } from '../../store/reducers/authReducer';
+import { isLogged, refreshed } from '../../store/reducers/authReducer';
 import { RootState } from '../../store/store';
 import jwtDecode from 'jwt-decode';
-import api from './AxiosInterceptor';
 
 const Login = () => {
     // logic for show password button
@@ -33,6 +32,8 @@ const Login = () => {
             const result = await axios.post(loginUrl, {
                 username: username,
                 password: password
+            }, {
+                withCredentials: true
             });
 
             if (result && result.data && result.data.data && result.data.data.accessToken) {
@@ -41,48 +42,72 @@ const Login = () => {
                 })
             }
             setLoginErrorCode(0)
-            // navigate(PathSidebar.DASHBOARD)
+            navigate(PathSidebar.DASHBOARD)
             dispatch(isLogged(result.data.data))
-            console.log(result)
         } catch (error: any) {
             if (error.response.data.message === AuthenticateCode.WRONG_PASSWORD) {
                 setLoginErrorCode(1)
             } else if (error.response.data.message === AuthenticateCode.NO_INPUT) {
                 setLoginErrorCode(2)
             } else {
-                // Username not exist
+                /* Username not exist*/
                 setLoginErrorCode(3)
             }
         }
     }
     // refresh token
-    const refreshToken = async () => {
-        let decoded: any = jwtDecode(user.accessToken);
-        const { exp } = decoded(refreshToken);
-        if (Date.now() >= exp * 1000) {
-            try {
-                const res = await axios.post("/refreshToken", {
-                    withCredential: true
-                })
-                console.log(res)
-            } catch (error) {
-                console.log(error)
-            }
-        } else {
+    const axiosJWT = axios.create();
 
+    const refreshToken = async () => {
+        try {
+            const res = await axios.post("http://localhost:8888/refreshToken", null, {
+                withCredentials: true
+            })
+            return res.data
+        } catch (error) {
+            console.log(error)
         }
     }
 
-    const api = axios.create({
-        baseURL: '/api',
-    });
+    axiosJWT.interceptors.request.use(async (config) => {
+        let date = new Date();
+        const decodedToken: any = jwtDecode(user.accessToken);
+        if (decodedToken.exp <= date.getTime() / 1000) {
+            const data = await refreshToken()
+            const refreshUser = { ...user, accessToken: data.data.accessToken }
+            setHeaders({
+                Authorization: `Bearer ${refreshUser.accessToken}`,
+            })
+            dispatch(refreshed(refreshUser))
+            config.headers['Authorization'] = `Bearer ${refreshUser.accessToken}`;
+        }
+        return config;
+    },
+        (error) => {
+            return Promise.reject(error);
+        });
 
+
+
+    // axios.interceptors.response.use(
+    //     (response) => { // Any status code from range of 2xx
+    //         // Do something with response data
+    //         return response;
+    //     },
+    //     (error) => { // Any status codes outside range of 2xx
+    //         // Do something with response error
+    //         return Promise.reject(error);
+    //     });
 
     const handleGetApiViaAccessToken = async () => {
+        console.log("check header : ", headers)
         try {
             const getUrl = `http://localhost:8888/api/v1/employee/1`
-            const result = await axios.get(getUrl, { headers });
-            console.log(result)
+            // const getUrl = `http://localhost:8888/log-out`
+            const result = await axiosJWT.get(getUrl, { headers },);
+            // const getUrl = `http://localhost:8888/log-out`
+            // const result = await axiosJWT.post(getUrl, { headers },);
+            // console.log(result)
         } catch (error) {
             console.log(error)
         }

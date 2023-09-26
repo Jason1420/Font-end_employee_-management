@@ -10,7 +10,6 @@ function App() {
   const handleShowSidebar = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     event.preventDefault();
     setShowSidebar(!isShowSidebar)
-    console.log(isShowSidebar)
   }
 
   return (

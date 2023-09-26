@@ -6,9 +6,12 @@ import flags_es from '../../assets/flags/es.png'
 import flags_de from '../../assets/flags/de.png'
 import flags_fr from '../../assets/flags/fr.png'
 import './Header.scss'
-import { Link } from 'react-router-dom'
-import { PathHeader } from '../../routes/Path'
-
+import { Link, useNavigate } from 'react-router-dom'
+import { PathAuth, PathHeader } from '../../routes/Path'
+import { AxiosInstance } from '../../store/AxiosInstance'
+import { useDispatch, useSelector } from 'react-redux'
+import { isLogout } from '../../store/reducers/authReducer'
+import { RootState } from '../../store/store'
 
 interface Props {
     isShowSidebar: boolean,
@@ -29,6 +32,26 @@ const Header: React.FC<Props> = ({ isShowSidebar, handleShowSidebar }) => {
         event.preventDefault();
         setUserDrop(!isUserDrop)
         setLangDrop(false)
+    }
+    //logic for logout
+    const dispatch = useDispatch()
+    const user = useSelector((state: RootState) => state.auth)
+    let headers = { Authorization: `Bearer ${user.accessToken}` }
+    const axiosJWT = AxiosInstance(dispatch, user)
+    const navigate = useNavigate();
+    const handleLogout = async () => {
+        try {
+
+            const postUrl = `http://localhost:8888/log-out`
+            const res = await axiosJWT.post(postUrl, null, { headers },);
+
+            console.log("access token 0s", res)
+            dispatch(isLogout())
+            setUserDrop(false)
+            navigate(PathAuth.LOG_IN)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
@@ -97,9 +120,10 @@ const Header: React.FC<Props> = ({ isShowSidebar, handleShowSidebar }) => {
                                 <Link to={PathHeader.SETTING} className="dropdown-item" onClick={() => setUserDrop(false)}>
                                     Setting
                                 </Link>
-                                <Link to={PathHeader.LOG_OUT} className="dropdown-item" onClick={() => setUserDrop(false)}>
+                                <button className="dropdown-item" onClick={() => handleLogout()}
+                                >
                                     Log out
-                                </Link>
+                                </button>
                             </div>
                         </li>
                     </ul>
