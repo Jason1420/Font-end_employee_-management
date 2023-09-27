@@ -42,7 +42,7 @@ const Header: React.FC<Props> = ({ isShowSidebar, handleShowSidebar }) => {
     const handleLogout = async () => {
         try {
             const postUrl = `http://localhost:8888/log-out`
-            const res = await axiosJWT.post(postUrl, null, { headers },);
+            await axiosJWT.post(postUrl, null, { headers },);
             dispatch(isLogout())
             setUserDrop(false)
             navigate(PathAuth.LOG_IN)
@@ -61,7 +61,7 @@ const Header: React.FC<Props> = ({ isShowSidebar, handleShowSidebar }) => {
                 </div>
 
                 <div className='toggle-btn col-6'>
-                    <a href='#' onClick={(event) => handleShowSidebar(event)}><i className="fas fa-bars"></i></a>
+                    <a href='/#' onClick={(event) => handleShowSidebar(event)}><i className="fas fa-bars"></i></a>
                     <div className='title'>Employee Management</div>
                 </div>
 
@@ -72,20 +72,20 @@ const Header: React.FC<Props> = ({ isShowSidebar, handleShowSidebar }) => {
                     <i className="fa fa-search"></i>
                 </div>
                 <div className="btn-group ">
-                    <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="navbarDropdownMenuLink" role="button" aria-expanded="false" onClick={(event) => handleLanguageDrop(event)}>
+                    <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/#" id="navbarDropdownMenuLink" role="button" aria-expanded="false" onClick={(event) => handleLanguageDrop(event)}>
                         <img src={flags_us} alt="" height="20" /> <span >English</span>
                     </a>
                     <div className={isLanguageDrop ? "dropdown-menu show" : "dropdown-menu"} aria-labelledby="navbarDropdownMenuLink" >
-                        <a href="#" className="dropdown-item">
+                        <a href="/#" className="dropdown-item">
                             <img src={flags_us} alt="" height="16" /> English
                         </a>
-                        <a href="#" className="dropdown-item">
+                        <a href="/#" className="dropdown-item">
                             <img src={flags_fr} alt="" height="16" /> French
                         </a>
-                        <a href="#" className="dropdown-item">
+                        <a href="/#" className="dropdown-item">
                             <img src={flags_es} alt="" height="16" /> Spanish
                         </a>
-                        <a href="#" className="dropdown-item">
+                        <a href="/#" className="dropdown-item">
                             <img src={flags_de} alt="" height="16" /> German
                         </a>
                     </div>
@@ -100,7 +100,7 @@ const Header: React.FC<Props> = ({ isShowSidebar, handleShowSidebar }) => {
                 </div>
 
                 <div className='user-profile' >
-                    <a className="user-text" href="#" role="button" aria-expanded="false" onClick={(event) => handleUser(event)}>
+                    <a className="user-text" href="/#" role="button" aria-expanded="false" onClick={(event) => handleUser(event)}>
                         <span className="user-img"><img src={avatar} alt="" /><span className="status-online"></span></span>
                         <span >{user.userDTO.username}</span>
                         <span className={isUserDrop ? "caret-open" : "caret"}></span>

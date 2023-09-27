@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import Logo from '../../assets/images/logo/logo2.png'
 import './ResetPassword.scss'
 import { NavLink } from 'react-router-dom'

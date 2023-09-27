@@ -4,6 +4,7 @@ export interface Employee {
     firstName: string
     lastName: string
     email: string
+    address: string
     gender: string | undefined
     dateOfBirth: string
     phoneNumber: string

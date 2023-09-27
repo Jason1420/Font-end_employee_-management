@@ -1,5 +1,4 @@
 import { createAction, createReducer } from '@reduxjs/toolkit'
-import { Employee } from '../../types/Employee'
 
 export interface UserLogin {
     accessToken: string,

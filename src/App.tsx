@@ -21,6 +21,7 @@ const App = () => {
                 <Route path={PathAuth.LOG_IN} element={<Login />} />
                 <Route path={PathAuth.REGISTER} element={<Register />} />
                 <Route path={PathAuth.FORGOT_PASSWORD} element={<ResetPassword />} />
+
                 <Route path='/*' element={<Navigate to={PathAuth.LOG_IN} />} />
               </>
               :

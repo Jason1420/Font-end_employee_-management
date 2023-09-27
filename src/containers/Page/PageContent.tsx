@@ -8,6 +8,7 @@ import EmployeeDashboard from '../../components/Dashboard/EmployeeDashboard';
 import MyProfile from '../../components/User/MyProfile';
 import AllEmployee from '../../components/Employee/AllEmployee';
 import { CustomScrollbars } from '../../components/Helper';
+import NewEmployee from '../../components/Employee/AddNewEmployee/NewEmployee';
 
 interface Props {
     isShowSidebar: boolean
@@ -34,6 +35,7 @@ const PageContent: React.FC<Props> = (props) => {
                         <Route path={PathSidebar.EMPLOYEE_DASHBOARD} element={<EmployeeDashboard />} />
                         <Route path={PathSidebar.ALL_EMPLOYEES} element={<AllEmployee />} />
                         <Route path={PathHeader.PROFILE + "/*"} element={<MyProfile />} />
+                        <Route path="/add-new-employee" element={<NewEmployee />} />
                     </Routes>
                 </CustomScrollbars>
             </div>

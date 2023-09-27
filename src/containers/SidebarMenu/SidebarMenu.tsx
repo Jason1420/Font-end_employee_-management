@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import './SidebarMenu.scss'
-import { Console } from 'console'
 import { NavLink } from 'react-router-dom'
 import { PathSidebar } from '../../routes/Path'
 
@@ -12,13 +11,11 @@ type Event = React.MouseEvent<HTMLAnchorElement, MouseEvent>;
 const SidebarMenu: React.FC<Props> = (props) => {
 
     const [isShow, setShow] = useState<boolean[]>(Array(5).fill(false))
-    const [isInit, setInit] = useState<boolean>(true)
     const handleShowUL = (event: Event, index: number) => {
         event.preventDefault();
         let updateStateShow = [...isShow];
         updateStateShow[index] = !updateStateShow[index]
         setShow([...updateStateShow]);
-        setInit(false)
     }
     return (
         <div className='sidebar-menu-container'>
@@ -31,7 +28,7 @@ const SidebarMenu: React.FC<Props> = (props) => {
                                     <span>General</span>
                                 </li>
                                 <li className={isShow[0] ? "sidebar-dropdown active" : "sidebar-dropdown"} >
-                                    <a href="#"
+                                    <a href="/#"
                                         onClick={(event) => handleShowUL(event, 0)}>
                                         <i className="fa fa-tachometer-alt" />
                                         <span>Dashboard</span>
@@ -52,7 +49,7 @@ const SidebarMenu: React.FC<Props> = (props) => {
                                     </div>
                                 </li>
                                 <li className={isShow[1] ? "sidebar-dropdown active" : "sidebar-dropdown"}>
-                                    <a href="#"
+                                    <a href="/#"
                                         onClick={(event) => handleShowUL(event, 1)}>
                                         <i className="fab fa-creative-commons-nd"></i>
                                         <span>Apps</span>
@@ -76,7 +73,7 @@ const SidebarMenu: React.FC<Props> = (props) => {
                                     <span>Employee</span>
                                 </li>
                                 <li className={isShow[2] ? "sidebar-dropdown active" : "sidebar-dropdown"}>
-                                    <a href="#"
+                                    <a href="/#"
                                         onClick={(event) => handleShowUL(event, 2)}>
                                         <i className="fas fa-user"></i>
                                         <span>Employee</span>
@@ -111,7 +108,7 @@ const SidebarMenu: React.FC<Props> = (props) => {
                                     </div>
                                 </li>
                                 <li className={isShow[3] ? "sidebar-dropdown active" : "sidebar-dropdown"}>
-                                    <a href="#"
+                                    <a href="/#"
                                         onClick={(event) => handleShowUL(event, 3)}>
                                         <i className="fa fa-rocket"></i>
                                         <span>Projects</span>
@@ -134,7 +131,7 @@ const SidebarMenu: React.FC<Props> = (props) => {
                                     <span>HR</span>
                                 </li>
                                 <li className={isShow[4] ? "sidebar-dropdown active" : "sidebar-dropdown"}>
-                                    <a href="#"
+                                    <a href="/#"
                                         onClick={(event) => handleShowUL(event, 4)}>
                                         <i className="fas fa-chart-pie"></i>
                                         <span>Report</span>

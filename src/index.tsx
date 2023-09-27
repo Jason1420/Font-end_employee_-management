@@ -1,15 +1,9 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss';
 import App from './App';
-import { BrowserRouter } from 'react-router-dom';
-import { Routes, Route } from 'react-router-dom';
-import Login from './containers/Auth/Login';
-import { PathAuth } from './routes/Path';
-import Register from './containers/Auth/Register';
-import ResetPassword from './containers/Auth/ResetPassword';
-import { Provider, useSelector } from 'react-redux';
-import { RootState, persistor, store } from './store/store';
+
+import { Provider } from 'react-redux';
+import { persistor, store } from './store/store';
 import { PersistGate } from 'redux-persist/integration/react';
 
 // import reportWebVitals from './reportWebVitals';

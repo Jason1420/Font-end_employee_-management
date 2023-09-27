@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import './AddNewEmployeeModal.scss'
-import { Modal, Button, Form } from 'react-bootstrap'
+import { Modal, Form } from 'react-bootstrap'
 import { SelectComponent } from '../../Helper/index'
 import { Employee } from '../../../types/Employee'
 import { AxiosInstance } from '../../../store/AxiosInstance'
@@ -9,6 +9,9 @@ import { RootState } from '../../../store/store'
 import { serverUrl } from '../../../utils/constant'
 import { CrudApiPath } from '../../../routes/Path'
 import { SelectOption } from '../../../types/SelectOption'
+import { validEmail, validName, validPassword, validPhoneNumber, validUsername } from './Regex'
+var debounce = require('lodash.debounce');
+
 
 
 interface Props {
@@ -20,7 +23,6 @@ const optionsGender = [
     { name: "Select Gender", id: 0 },
     { name: "Male", id: 1 },
     { name: "Female", id: 2 },
-
 ]
 
 
@@ -30,6 +32,7 @@ const AddNewEmployeeModal: React.FC<Props> = (props) => {
         firstName: "",
         lastName: "",
         email: "",
+        address: "",
         gender: "",
         dateOfBirth: "",
         phoneNumber: "",
@@ -41,7 +44,15 @@ const AddNewEmployeeModal: React.FC<Props> = (props) => {
         password: "",
         confirmPassword: ""
     })
-
+    const [validError, setValidError] = useState({
+        firstName: false,
+        lastName: false,
+        username: false,
+        password: false,
+        confirmPassword: false,
+        email: false,
+        phoneNumber: false
+    })
     const numberPermission: boolean[] = Array(6).fill(false);
 
     //get data from database
@@ -62,7 +73,6 @@ const AddNewEmployeeModal: React.FC<Props> = (props) => {
             try {
                 const getDefaultDataFromDatabaseUrl = serverUrl + CrudApiPath.GET_DATA_DEFAULT
                 const res = await axiosJWT.get(getDefaultDataFromDatabaseUrl, { headers },)
-                console.log(res.data.data)
                 if (res && res.data && res.data.data) {
                     if (res.data.data.departments) setDepartments(res.data.data.departments)
 
@@ -75,9 +85,8 @@ const AddNewEmployeeModal: React.FC<Props> = (props) => {
             }
         }
         getDataDefault()
-        console.log("Check department : ", departments)
-        console.log("Check designation : ", designations)
-        console.log("Check quarter : ", quarters)
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     // logic add new employee 
     const handleOnChangeGender = (o: SelectOption | undefined) => {
@@ -87,7 +96,6 @@ const AddNewEmployeeModal: React.FC<Props> = (props) => {
             gender: o?.name
         })
     }
-
     const handleOnChangeQuarter = (o: SelectOption | undefined) => {
         setQuarterSelectedValue(o)
         setNewEmployee({
@@ -110,7 +118,6 @@ const AddNewEmployeeModal: React.FC<Props> = (props) => {
         })
     }
 
-
     const handleAddNewEmployee = async () => {
         try {
 
@@ -121,16 +128,67 @@ const AddNewEmployeeModal: React.FC<Props> = (props) => {
             console.log(error)
         }
     }
-
+    // logic validation -- debounce & regex
+    const validate = (newEmployee: Employee) => {
+        // if (!validName.test(newEmployee.firstName)) {
+        //     setValidError({ ...validError, firstName: true })
+        // } else {
+        //     setValidError({ ...validError, firstName: false })
+        // }
+        // if (!validName.test(newEmployee.lastName)) {
+        //     setValidError({ ...validError, lastName: true })
+        // } else {
+        //     setValidError({ ...validError, lastName: false })
+        // }
+        // if (newEmployee.username !== "" && !validUsername.test(newEmployee.username)) {
+        //     setValidError({ ...validError, username: true })
+        // } else {
+        //     setValidError({ ...validError, username: false })
+        // }
+        // if (newEmployee.password !== "" && !validPassword.test(newEmployee.password)) {
+        //     setValidError({ ...validError, password: true })
+        // } else {
+        //     setValidError({ ...validError, password: false })
+        // }
+        // if (newEmployee.password !== newEmployee.confirmPassword) {
+        //     setValidError({ ...validError, confirmPassword: true })
+        // } else {
+        //     setValidError({ ...validError, confirmPassword: false })
+        // }
+        // if (newEmployee.email !== "" && !validEmail.test(newEmployee.email)) {
+        //     setValidError({ ...validError, email: true })
+        // } else {
+        //     setValidError({ ...validError, email: false })
+        // }
+        // if (newEmployee.phoneNumber !== "" && !validPhoneNumber.test(newEmployee.phoneNumber)) {
+        //     setValidError({ ...validError, phoneNumber: true })
+        // } else {
+        //     setValidError({ ...validError, phoneNumber: false })
+        // }
+        console.log("--------------------------")
+        console.log(newEmployee.firstName)
+        console.log("test first name", validName.test(newEmployee.firstName))
+        console.log(newEmployee.lastName)
+        console.log("test last name", validName.test(newEmployee.lastName))
+        console.log(newEmployee.username)
+        console.log("test username ", validUsername.test(newEmployee.username))
+        console.log(newEmployee.password)
+        console.log("test password", validPassword.test(newEmployee.password))
+        console.log(newEmployee.email)
+        console.log("test email", validEmail.test(newEmployee.email))
+        // console.log(validError)
+    }
+    // const debounceValidate = useMemo(() => { return debounce(validate, 500) }, [])
+    const debounceValidate = debounce(validate, 1000)
 
     return (
         <Modal show={props.isShowModalAddNew} onHide={props.handleClose}
             size='lg'
         >
             <Modal.Header closeButton>
-                <Modal.Title
-                    className="contained-modal-title-vcenter"
-                >New Employee</Modal.Title>
+                <Modal.Title className="contained-modal-title-vcenter">
+                    New Employee
+                </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form>
@@ -138,51 +196,60 @@ const AddNewEmployeeModal: React.FC<Props> = (props) => {
                     <div className="form-add-employee row">
                         <div className="form-group col-sm-6 input-form ">
                             <label htmlFor="firstName">First Name<span className="text-danger">*</span></label>
+                            {validError.firstName && <label className='text-danger'>First name shouldn't be blank</label>}
                             <input type="text" value={newEmployee.firstName} className="form-control " id="firstName"
+                                onInput={() => debounceValidate()}
                                 onChange={(event => setNewEmployee({ ...newEmployee, firstName: event.target.value }))} />
                         </div>
                         <div className="form-group col-sm-6 input-form ">
                             <label htmlFor="lastName">Last Name<span className="text-danger">*</span></label>
                             <input type="text" value={newEmployee.lastName} className="form-control " id="lastName"
+                                onInput={() => debounceValidate()}
                                 onChange={(event => setNewEmployee({ ...newEmployee, lastName: event.target.value }))} />
                         </div>
                         <div className="form-group col-sm-6 input-form ">
                             <label htmlFor="username">UserName<span className="text-danger">*</span></label>
                             <input type="text" value={newEmployee.username} className="form-control " id="username"
+                                onInput={() => debounceValidate()}
                                 onChange={(event => setNewEmployee({ ...newEmployee, username: event.target.value }))} />
                         </div>
                         <div className="form-group col-sm-6 input-form ">
                             <label htmlFor="email">Email address<span className="text-danger">*</span></label>
+                            {validError.email && <label className='text-danger'>Invalid email</label>}
                             <input type="email" value={newEmployee.email} className="form-control " id="email"
-                                onChange={(event => setNewEmployee({ ...newEmployee, email: event.target.value }))} />
+                                onChange={() => debounceValidate()}
+                                onInput={(event => setNewEmployee({ ...newEmployee, email: (event.target as HTMLInputElement).value }))} />
                         </div>
                         <div className="form-group col-sm-6 input-form ">
-                            <label htmlFor="username">Birthday<span className="text-danger">*</span></label>
+                            <label htmlFor="username">Birthday</label>
                             <input type="date" value={newEmployee.dateOfBirth} className="form-control " id="username"
                                 onChange={(event => setNewEmployee({ ...newEmployee, dateOfBirth: event.target.value }))} />
                         </div>
                         <div className="form-group col-sm-6 input-form ">
-                            <label htmlFor="email">Gender<span className="text-danger">*</span></label>
+                            <label htmlFor="email">Gender</label>
                             <SelectComponent options={optionsGender} id={genderSelectedValue}
                                 selectOnChange={(o) => handleOnChangeGender(o)} />
                         </div>
                         <div className="form-group col-sm-6 input-form">
                             <label htmlFor="password">Password</label>
                             <input type="password" value={newEmployee.password} className="form-control " id="password"
+                                onInput={() => debounceValidate()}
                                 onChange={(event => setNewEmployee({ ...newEmployee, password: event.target.value }))} />
                         </div>
                         <div className="form-group col-sm-6 input-form">
                             <label htmlFor="confirmPassword">Confirm Password</label>
                             <input type="password" value={newEmployee.confirmPassword} className="form-control " id="confirmPassword"
+                                onInput={() => debounceValidate()}
                                 onChange={(event => setNewEmployee({ ...newEmployee, confirmPassword: event.target.value }))} />
                         </div>
                         <div className="form-group col-sm-6 input-form ">
                             <label htmlFor="employeeId">Employee ID<span className="text-danger">*</span></label>
                             <input type="text" value={newEmployee.code} className="form-control " id="employeeId"
+                                onInput={() => debounceValidate()}
                                 onChange={(event => setNewEmployee({ ...newEmployee, code: event.target.value }))} />
                         </div>
                         <div className="form-group col-sm-6 input-form ">
-                            <label htmlFor="joiningDate">Joining Date<span className="text-danger">*</span></label>
+                            <label htmlFor="joiningDate">Joining Date</label>
                             <input type="date" value={newEmployee.joiningDate} className="form-control "
                                 onChange={(event) => setNewEmployee({ ...newEmployee, joiningDate: event.target.value })}
                             />
@@ -190,6 +257,7 @@ const AddNewEmployeeModal: React.FC<Props> = (props) => {
                         <div className="form-group col-sm-6 input-form ">
                             <label htmlFor="phone">Phone</label>
                             <input type="phone" value={newEmployee.phoneNumber} className="form-control " id="phone"
+                                onInput={() => debounceValidate()}
                                 onChange={(event => setNewEmployee({ ...newEmployee, phoneNumber: event.target.value }))} />
                         </div>
                         <div className="form-group col-sm-6 input-form ">

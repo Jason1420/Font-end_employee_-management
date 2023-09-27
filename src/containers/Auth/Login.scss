@@ -67,16 +67,6 @@
                         font-size: 16px;
                         margin-bottom: 5px;
                     }
-
-                    .forgot-password {
-                        position: absolute;
-                        right: 0;
-                        top: 0;
-                        color: #8e8e8e !important;
-                        font-weight: 500;
-                        text-decoration: none;
-                        font-size: 15px;
-                    }
                 }
 
                 .password-input-form {
@@ -112,18 +102,23 @@
             button {
                 background: linear-gradient(to right, #ff9b44 0%, #fc6075 100%);
                 border: 0;
-                display: block;
                 font-size: 22px;
                 width: 100%;
                 border-radius: 4px;
                 padding: 10px 26px;
                 color: white;
                 font-weight: 500;
-                margin-bottom: 25px;
+                margin-bottom: 5px;
             }
 
             .account-footer {
                 font-weight: 500;
+                font-size: 15px;
+            }
+            .forgot-password {
+                color: blue !important;
+                font-weight: 500;
+                text-decoration: none;
                 font-size: 15px;
             }
         }

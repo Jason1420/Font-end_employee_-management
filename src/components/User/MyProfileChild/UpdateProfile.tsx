@@ -1,23 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './UpdateProfile.scss'
 import { Modal, Form } from 'react-bootstrap'
-import SelectComponent from '../../Helper/SelectComponent/SelectComponent'
 interface Props {
     isShowModalAddNew: boolean,
     handleClose: () => void
 }
-const options = [
-    { label: "Select Designation", value: 0 },
-    { label: "Web Developer", value: 1 },
-    { label: "Web Designer", value: 2 },
-    { label: "Android Developer", value: 3 },
-    { label: "Ios Developer", value: 4 },
-]
 
 
 const UpdateProfile: React.FC<Props> = (props) => {
     const numberPermission: boolean[] = Array(6).fill(false);
-    const [value, setValue] = useState<typeof options[0] | undefined>(options[0]);
     return (
         <Modal show={props.isShowModalAddNew} onHide={props.handleClose}
             size='lg'

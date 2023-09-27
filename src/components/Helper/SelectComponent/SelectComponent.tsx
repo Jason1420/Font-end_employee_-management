@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState } from 'react'
 import './SelectComponent.scss'
 import { SelectOption } from '../../../types/SelectOption';
 
@@ -18,9 +18,9 @@ const SelectComponent = ({ id, selectOnChange, options }: SelectProps) => {
     // useEffect(() => {
     //     if (isOpen) setHighlightedIndex(0)
     // }, [isOpen])
-    const clearOption = () => {
-        selectOnChange(undefined);
-    }
+    // const clearOption = () => {
+    //     selectOnChange(undefined);
+    // }
     const selectOption = (option: SelectOption) => {
         if (option !== id) selectOnChange(option);
     }

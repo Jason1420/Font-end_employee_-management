@@ -5,34 +5,35 @@ const Pagination = () => {
         <div className='pagination--container'>
             <div className="pagination--bar">{/**/}
                 <div className="page__item disabled">
-                    <a className="page--link">&lt;
-                    </a></div>
+                    <a href='/#' className="page--link">&lt;
+                    </a>
+                </div>
                 <div className="page__item active">
-                    <a className="page--link">1
+                    <a href='/#' className="page--link">1
                     </a>
                 </div>
                 <div className="page__item">
-                    <a className="page--link">2
+                    <a href='/#' className="page--link">2
                     </a>
                 </div>
                 <div className="page__item">
-                    <a className="page--link">3
+                    <a href='/#' className="page--link">3
                     </a>
                 </div>
                 <div className="page__item disabled">
-                    <a className="page--link">…
+                    <a href='/#' className="page--link">…
                     </a>
                 </div>
                 <div className="page__item">
-                    <a className="page--link">412
+                    <a href='/#' className="page--link">412
                     </a>
                 </div>
                 <div className="page__item">
-                    <a className="page--link">413
+                    <a href='/#' className="page--link">413
                     </a>
                 </div>
                 <div className='page__item'>
-                    <a className="page--link">&gt;
+                    <a href='/#' className="page--link">&gt;
                     </a>
                 </div>
             </div>

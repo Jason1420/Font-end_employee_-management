@@ -18,13 +18,13 @@ const DropdownProfile: React.FC<Props> = (props) => {
                 <div className="dropdown__list">
                     <div className="dropdown--item" >
                         <i className="fas fa-user-edit"></i>
-                        <a href="#" >
+                        <a href="/#" >
                             Edit
                         </a>
                     </div>
                     <div className="dropdown--item">
                         <i className="fas fa-trash-alt"></i>
-                        <a href="#">
+                        <a href="/#">
                             Delete
                         </a>
                     </div>

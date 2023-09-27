@@ -1,0 +1,58 @@
+@import "~bootstrap/scss/bootstrap";
+@import "../../../styles/fontawesome.scss";
+@import "../../../index.scss";
+
+.new-employee-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: "CircularStd", sans-serif;
+    padding: 30px 20px 40px 10px;
+    .employees-header {
+        display: flex;
+        flex-direction: column;
+        .bread-crumb {
+            display: flex;
+            color: #6c757d;
+            font-weight: 500;
+            text-align: left;
+            .redirect-all-employee {
+                color: black;
+                cursor: pointer;
+            }
+            .breadcrumb-history {
+                cursor: pointer;
+                color: #212529;
+            }
+        }
+    }
+    .form-add-employee {
+        width: 80%;
+        margin-left: 10%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 2%;
+        .input-form {
+            width: 49%;
+            margin-bottom: 5px;
+        }
+        .end-form {
+            width: 49%;
+            text-align: end;
+            .button-custom {
+                margin-top: 9px;
+                border-radius: 5px;
+                border: 1px solid #ededed;
+                box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+                width: 100%;
+                min-height: 50px;
+                background: #ff9b44;
+                color: white;
+                font-size: 18px;
+                font-weight: 500;
+            }
+        }
+    }
+}

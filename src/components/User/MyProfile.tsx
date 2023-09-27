@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
 import './MyProfile.scss'
 import avatar from '../../assets/images/profiles/avatar-05.jpg';
 import { NavLink, Routes, Route } from 'react-router-dom';
-import { Profile, Bank_Statutory, UpdateProfile } from './MyProfileChild';
+import { Profile, BankStatutory } from './MyProfileChild';
 import Projects from '../Project/Projects';
 const MyProfile = () => {
-    const [isOpenEditForm, setIsOpenEditForm] = useState<boolean>(false)
+    // const [isOpenEditForm, setIsOpenEditForm] = useState<boolean>(false)
     const handleOpenEditForm = () => {
 
     }
@@ -40,7 +39,7 @@ const MyProfile = () => {
                                 Phone:
                             </div>
                             <div className="value">
-                                <a>
+                                <a href='/#'>
                                     johndoe@example.com</a>
                             </div>
                         </div>
@@ -50,7 +49,7 @@ const MyProfile = () => {
                                 Email:
                             </div>
                             <div className="value">
-                                <a>9876543210</a>
+                                <a href='/#'>9876543210</a>
                             </div>
                         </div>
 
@@ -86,7 +85,7 @@ const MyProfile = () => {
                                 Reports to:
                             </div>
                             <div className="value">
-                                <a>Jeffery Lalor</a>
+                                <a href='/#'>Jeffery Lalor</a>
                             </div>
                         </div>
                     </div>
@@ -106,7 +105,7 @@ const MyProfile = () => {
                 <Routes>
                     <Route index element={<Profile />} />
                     <Route path='/2' element={<Projects />} />
-                    <Route path='/3/' element={<Bank_Statutory />} />
+                    <Route path='/3/' element={<BankStatutory />} />
                 </Routes>
             </div>
         </div >

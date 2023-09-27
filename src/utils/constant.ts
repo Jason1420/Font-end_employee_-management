@@ -1,8 +1,5 @@
-import React from 'react'
-
 export const AuthenticateCode = {
-    WRONG_PASSWORD: "Bad credentials",
-    NO_INPUT: "Please input parameter"
+    BAD_CREDENTIALS: "Bad credentials",
 }
 export const serverUrl = "http://localhost:8888"
 

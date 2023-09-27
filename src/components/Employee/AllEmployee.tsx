@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './AllEmployee.scss'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import IMAGES from '../../assets/images/profiles'
 import AddNewEmployeeModal from './AddNewEmployee/AddNewEmployeeModal'
 import { SelectComponent, Pagination } from '../Helper'
@@ -17,7 +17,7 @@ const AllEmployee = () => {
     const [showMiniMenu, setShowMiniMenu] = useState<boolean[]>(Array(12).fill(false))
     const [isShowModalAddNew, setIsShowModalAddNew] = useState<boolean>(false)
     const [id, setId] = useState<typeof options[0] | undefined>(options[0]);
-
+    const navigate = useNavigate()
     const handleOpenMiniMenu = (index: number) => {
         let showMiniMenuNewState = [...showMiniMenu];
         showMiniMenuNewState[index] = !showMiniMenuNewState[index]
@@ -26,8 +26,8 @@ const AllEmployee = () => {
     const handleCloseAddNewModal = () => {
         setIsShowModalAddNew(false)
     }
-    const handleShowAddNewModal = () => {
-        setIsShowModalAddNew(true)
+    const handleDirectNewEmployeePage = () => {
+        navigate("/add-new-employee")
     }
     return (
         <>
@@ -42,7 +42,7 @@ const AllEmployee = () => {
                     <div className="header-right">
                         <button ><i className="fa fa-th"></i></button>
                         <button ><i className="fa fa-bars"></i></button>
-                        <button className="add-employee" onClick={() => handleShowAddNewModal()}> <b>+</b> Add Employee</button>
+                        <button className="add-employee" onClick={() => handleDirectNewEmployeePage()}> <b>+</b> Add Employee</button>
                     </div>
                 </div>
                 <div className="employees-content">
@@ -82,11 +82,11 @@ const AllEmployee = () => {
                         {showMiniMenu[0] && <div className="mini-dropdown">
                             <div className="dropdown--item" >
 
-                                <a href="#"  > <i className="fas fa-user-edit"></i>Edit
+                                <a href="/#"  > <i className="fas fa-user-edit"></i>Edit
                                 </a>
                             </div>
                             <div className="dropdown--item">
-                                <a href="#">
+                                <a href="/#">
                                     <i className="fas fa-trash-alt"></i>Delete
                                 </a>
                             </div>
@@ -101,11 +101,11 @@ const AllEmployee = () => {
                         {showMiniMenu[1] && <div className="mini-dropdown">
                             <div className="dropdown--item" >
 
-                                <a href="#"  > <i className="fas fa-user-edit"></i>Edit
+                                <a href="/#"  > <i className="fas fa-user-edit"></i>Edit
                                 </a>
                             </div>
                             <div className="dropdown--item">
-                                <a href="#">
+                                <a href="/#">
                                     <i className="fas fa-trash-alt"></i>Delete
                                 </a>
                             </div>
@@ -120,11 +120,11 @@ const AllEmployee = () => {
                         {showMiniMenu[2] && <div className="mini-dropdown">
                             <div className="dropdown--item" >
 
-                                <a href="#"  > <i className="fas fa-user-edit"></i>Edit
+                                <a href="/#"  > <i className="fas fa-user-edit"></i>Edit
                                 </a>
                             </div>
                             <div className="dropdown--item">
-                                <a href="#">
+                                <a href="/#">
                                     <i className="fas fa-trash-alt"></i>Delete
                                 </a>
                             </div>
